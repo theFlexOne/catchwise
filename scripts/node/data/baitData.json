@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Clams and Mussels",
+    "type": "live",
+    "description": "Clams and mussels are an excellent live bait choice, if it’s native to where you’re casting your line. They should be gathered fresh from shallow waters, then crack the shell so you can cut them out of it. Let them harden a little in the sun to make sure they stay on the hook."
+  },
+  {
+    "name": "Crayfish",
+    "type": "live",
+    "description": "Crayfish can be used alive or dead, depending on the fish species you’re targeting (alive for Smallmouth Bass, dead for Catfish), and purchased from a local bait store or caught out in the water. Just hook them through the tail and you’re ready to cast."
+  },
+  {
+    "name": "Eels",
+    "type": "live",
+    "description": "Eels are tough bait, which makes them perfect for when you’re trolling or bottom fishing. See how eel fares as bait when you’re fishing for Striped Bass. For more about top water or bottom feeding bass baits, take a look at our bass bait post!"
+  },
+  {
+    "name": "Grubs and Mealworms",
+    "type": "live",
+    "description": "Grubs and mealworms are an affordable live bait, that can be picked up in your local bait shop or found out in the dirt. Hook them on the line alone, or in multiples, and cast them out when you’re fishing for Trout."
+  },
+  {
+    "name": "Insects",
+    "type": "live",
+    "description": "Freshwater fish like,  Smallmouth Bass and Trout, are natural predators of insects, so bring some ants, caterpillars, crickets, and other bugs to see what’s attracting the fish to your line."
+  },
+  {
+    "name": "Leeches",
+    "type": "live",
+    "description": "If you’re going for Walleye, then you’ll want to try fishing with hardy leeches. Hook them through the sucker in their tail and be sure to fish them at the same pace they naturally swim to get the best results."
+  },
+  {
+    "name": "Minnows",
+    "type": "live",
+    "description": "Minnows are baby fish, and are one of the most popular freshwater live bait, because it is effective and readily available in local bait shops or waters. You can use them for drifting, trolling, or retrieving, and hook them different ways to get your desired effect. For some of the best action, hook them upside down. Add a shiner when you’re after Bass and get ready for a fight."
+  },
+  {
+    "name": "Shrimp",
+    "type": "live",
+    "description": "You’ll have the most success with shrimp, if you use them in waters that are 70 degrees or cooler. If using them for Catfish, try frozen shrimp with the shell and tail removed."
+  },
+  {
+    "name": "Worms",
+    "type": "live",
+    "description": "If you need an affordable, versatile, and easy-to-use freshwater bait, go for worms. Worms can be found out in your yard hiding in damp dirt or in your local bait shop, and come in different varieties to target different fish species; for example, try earthworms for Bass and Walleye."
+  },
+  {
+    "name": "Crankbaits / Plugs",
+    "type": "artificial",
+    "description": "Crankbaits, also known as plugs, are made of hard plastic and are designed to be cast out and retrieved repeatedly for quick, aggressive strikes. If you’re going with a crankbait, it should be noted that these baits aren’t necessarily intended for use around brush like plastic baits, use some caution before tossing this one on your line. They come in four different varieties suitable for different situations:"
+  },
+  {
+    "name": "Flies",
+    "type": "artificial",
+    "description": "Flies are designed to replicate the look of natural insects and get tossed into the water on a fly line while  fly fishing. There is a number of different types of flies, including dry flies, “match the hatch,” terrestrial bugs, attractors, wet flies, nymphs, and streamers."
+  },
+  {
+    "name": "Jigs",
+    "type": "artificial",
+    "description": "Jigs are an affordable year-round kind of bait, that can be retrieved differently depending on your water situation. They can be used in both warm and cold water, and have proven to be a solid bait choice around brush, rocks, and weeds. You’ll normally retrieve them using an up-and-down motion, but you may want to consider retrieving them straight to get the lure to mimic a swimming motion."
+  },
+  {
+    "name": "Plastics",
+    "type": "artificial",
+    "description": "Plastic baits have been around since the early 1950s, back when the plastic worm was first marketed. This revolutionized the sport of fishing and led to the creation of more plastic baits, including crayfish, grubs, and salamanders. They come in many different colors and sizes suitable for use around brush, weeds, and rocky drop-offs, and make for an excellent bait choice when you’re going for Largemouth Bass."
+  },
+  {
+    "name": "Spinner Baits",
+    "type": "artificial",
+    "description": "Spinner baits, or safety pin spinners, are named for how they look. They come with one or more spinners, a single hook, and a weighted end. Consider using a spinnerbait in areas you definitely wouldn’t use a crankbait, such as in areas of brush or weeds. These baits are extremely flexible and can be fished in shallow, deep, murky, or clear waters."
+  },
+  {
+    "name": "Spoons",
+    "type": "artificial",
+    "description": "Spoons resemble the bowl of a spoon and trick fish into striking by swaying side-to-side as they’re retrieved. They work for a large variety of different freshwater fish species, but most anglers agree smaller spoons are better for fish like Trout, while larger spoons are better for Bass and Walleye. You’ll find that this bait is pretty flexible, but spoons are typically designed for fishing beneath the surface of the water, with some that can be quickly retrieved along the surface."
+  },
+  {
+    "name": "Cured Fish Roe",
+    "type": "other",
+    "description": "Cured fish roe is an excellent bait choice, when you’re targeting spawning fish, since they’ll ignore the other baits you’ve got in your tackle box. You can make this yourself before you head to the water or pick it up at a local bait store along the way."
+  },
+  {
+    "name": "Cut Bait",
+    "type": "other",
+    "description": "Cut bait is ideal for fish species that rely more on scent than sight, such as Catfish. It’s also great for trolling, if you don’t have any artificial bait available to put on your line."
+  },
+  {
+    "name": "Dough Balls",
+    "type": "other",
+    "description": "Dough balls are pretty much what it sounds like. They’re prepared fishing bait you can choose to make yourself or buy in the store, canned and ready for different fish species like Catfish, Crappie, or Trout. Just mold it on your hook and get ready to cast."
+  }
+]
