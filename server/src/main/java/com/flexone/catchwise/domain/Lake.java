@@ -17,9 +17,11 @@ import java.util.Set;
 public class Lake {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
+    private String localId;
     private String state;
     private String county;
     private Integer countyId;
