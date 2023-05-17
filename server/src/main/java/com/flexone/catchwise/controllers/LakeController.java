@@ -26,6 +26,7 @@ public class LakeController {
         return lakeService.findAll(page, size, direction, sortProperty);
     }
 
+    //delete me
 
     @GetMapping("/{id}")
     public LakeResponse getLakeById(@PathVariable Long id) {
