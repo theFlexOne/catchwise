@@ -6,13 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class LakeFishResponse {
+public class FishResponse {
 
     private Long id;
     private String name;
-    private String url;
+    private String family;
+    private String species;
+    private String description;
+    private String identification;
+    private String[] commonNames;
 
 }

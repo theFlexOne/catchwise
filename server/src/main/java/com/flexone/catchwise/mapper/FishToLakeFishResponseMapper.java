@@ -7,13 +7,13 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface FishToLakeFishResponseMapper {
     FishToLakeFishResponseMapper INSTANCE = Mappers.getMapper(FishToLakeFishResponseMapper.class);
 
     @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
     LakeFishResponse fishToLakeFishResponse(Fish fish);
 
     @AfterMapping

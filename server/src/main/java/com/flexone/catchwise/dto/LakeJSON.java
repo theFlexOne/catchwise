@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class LakeDTO {
+public class LakeJSON {
 
     private Long id;
     private String name;

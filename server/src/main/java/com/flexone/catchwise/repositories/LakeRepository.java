@@ -12,4 +12,6 @@ public interface LakeRepository extends JpaRepository<Lake, Long> {
     @Override
     @NonNull
     Page<Lake> findAll(@NonNull Pageable pageable);
+
+    Page<Lake> findAllByCounty(String county, Pageable pageable);
 }

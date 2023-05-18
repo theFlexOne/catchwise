@@ -27,9 +27,11 @@ public class Lake {
 
     private String name;
     private String localId;
-    private String state;
-    private String county;
-    private Integer countyId;
+
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "county_id", referencedColumnName = "id")
+    private County county;
+
     private String nearestTown;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -42,7 +44,7 @@ public class Lake {
 
     public List<LakeFishResponse> getLakeFishResponses() {
         return fish.stream()
-                .map(f -> new LakeFishResponse(f.getId(), "/fish/" + f.getId()))
+                .map(f -> new LakeFishResponse(f.getId(), f.getName(), "/fish/" + f.getId()))
                 .collect(Collectors.toList());
     }
 }

@@ -11,4 +11,5 @@ public interface FishRepository extends JpaRepository<Fish, Long> {
 
     Fish findBySpecies(String species);
     List<Fish> findAllBySpeciesIn(List<String> species);
+    Fish findByCommonNamesContaining(String commonName);
 }

@@ -2,11 +2,14 @@ package com.flexone.catchwise.bootstrap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import com.flexone.catchwise.domain.County;
 import com.flexone.catchwise.domain.Fish;
 import com.flexone.catchwise.domain.Lake;
-import com.flexone.catchwise.dto.LakeDTO;
+import com.flexone.catchwise.dto.LakeJSON;
+import com.flexone.catchwise.repositories.CountyRepository;
 import com.flexone.catchwise.repositories.FishRepository;
 import com.flexone.catchwise.repositories.LakeRepository;
+import com.flexone.catchwise.repositories.StateRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +27,8 @@ public class SeedData implements CommandLineRunner {
 
     private final FishRepository fishRepository;
     private final LakeRepository lakeRepository;
+    private final CountyRepository countyRepository;
+    private final StateRepository stateRepository;
 
     @Override
     public void run(String... args) {
@@ -56,28 +61,27 @@ public class SeedData implements CommandLineRunner {
     private List<Lake> importLakeDataJSON() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/resources/data/lakeData.json");
-        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, LakeDTO.class);
-        List<LakeDTO> lakesJson = objectMapper.readValue(file, collectionType);
+        CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, LakeJSON.class);
+        List<LakeJSON> lakesJson = objectMapper.readValue(file, collectionType);
         List<Lake> lakes = new ArrayList<>();
-        for (LakeDTO lakeDTO : lakesJson) {
-            lakes.add(mapLakeDTOToLake(lakeDTO));
+        for (LakeJSON lakeJSON : lakesJson) {
+            lakes.add(mapLakeJSONToLake(lakeJSON));
         }
         return lakes;
     }
 
-    private Lake mapLakeDTOToLake(LakeDTO lakeDTO) {
-        List<String> speciesList = Arrays.stream(lakeDTO.getFishSpecies()).map(LakeDTO.FishSpecies::getSpecies).filter(species -> species.length() > 0).collect(Collectors.toList());
+    private Lake mapLakeJSONToLake(LakeJSON lakeJSON) {
+        List<String> speciesList = Arrays.stream(lakeJSON.getFishSpecies()).map(LakeJSON.FishSpecies::getSpecies).filter(species -> species.length() > 0).collect(Collectors.toList());
         List<Fish> fish = fishRepository.findAllBySpeciesIn(speciesList);
         Set<Fish> fishSet = new HashSet<>(fish);
+        County county = countyRepository.findByName(lakeJSON.getCounty());
 
         return Lake.builder()
-                .name(lakeDTO.getName())
-                .localId(lakeDTO.getLocalId())
-                .state(lakeDTO.getState())
-                .county(lakeDTO.getCounty())
-                .countyId(lakeDTO.getCountyId())
-                .nearestTown(lakeDTO.getNearestTown())
-                .coordinates(lakeDTO.getCoordinates())
+                .name(lakeJSON.getName())
+                .localId(lakeJSON.getLocalId())
+                .county(county)
+                .nearestTown(lakeJSON.getNearestTown())
+                .coordinates(lakeJSON.getCoordinates())
                 .fish(fishSet)
                 .build();
     }

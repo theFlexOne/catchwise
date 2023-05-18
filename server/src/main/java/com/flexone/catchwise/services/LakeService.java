@@ -9,8 +9,7 @@ import java.util.List;
 
 public interface LakeService {
 
-    LakeResponse getLakeById(Long id);
-    List<Lake> getLakes();
+    Lake findById(Long id);
+    Page<Lake> findAll(int page, int size, Sort.Direction direction, String sortProperty);
 
-    Page<LakeResponse> findAll(int page, int size, Sort.Direction direction, String sortProperty);
 }
