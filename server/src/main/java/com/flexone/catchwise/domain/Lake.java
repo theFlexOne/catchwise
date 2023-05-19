@@ -1,19 +1,24 @@
 package com.flexone.catchwise.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.flexone.catchwise.dto.LakeFishResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Lake {
 
     @Id
@@ -22,16 +27,24 @@ public class Lake {
 
     private String name;
     private String localId;
-    private String state;
-    private String county;
-    private Integer countyId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "county_id", referencedColumnName = "id")
+    private County county;
+
+    private String nearestTown;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "coordinates_id", referencedColumnName = "id")
-    private Coordinates coords;
+    private Coordinates coordinates;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "lake_fish", joinColumns = @JoinColumn(name = "lake_id"), inverseJoinColumns = @JoinColumn(name = "fish_id"))
-    private Set<Fish> fish;
+    private Set<Fish> fish = new HashSet<>();
 
+    public List<LakeFishResponse> getLakeFishResponses() {
+        return fish.stream()
+                .map(f -> new LakeFishResponse(f.getId(), f.getName(), "/fish/" + f.getId()))
+                .collect(Collectors.toList());
+    }
 }
