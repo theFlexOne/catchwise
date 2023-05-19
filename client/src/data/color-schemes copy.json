@@ -1,0 +1,767 @@
+[
+  {
+    "colors": {
+      "60": {
+        "color": "#1B2734",
+        "name": "Deep Sea Blue"
+      },
+      "30": {
+        "color": "#3B4B5B",
+        "name": "Midnight Steel"
+      },
+      "10": {
+        "color": "#6B7B8B",
+        "name": "Dusky Slate"
+      }
+    },
+    "name": "Oceanic Depths"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#293145",
+        "name": "Sapphire Night"
+      },
+      "30": {
+        "color": "#52637B",
+        "name": "Moonlit Indigo"
+      },
+      "10": {
+        "color": "#8693A8",
+        "name": "Twilight Mist"
+      }
+    },
+    "name": "Lunar Serenity"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#1C2F26",
+        "name": "Emerald Abyss"
+      },
+      "30": {
+        "color": "#3C5F4C",
+        "name": "Mossy Shade"
+      },
+      "10": {
+        "color": "#6C9F8A",
+        "name": "Verdant Depths"
+      }
+    },
+    "name": "Enchanted Forest"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#363636",
+        "name": "Shadow Slate"
+      },
+      "30": {
+        "color": "#656565",
+        "name": "Charcoal Gray"
+      },
+      "10": {
+        "color": "#A4A4A4",
+        "name": "Silver Mist"
+      }
+    },
+    "name": "Mystic Monochrome"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#2E2827",
+        "name": "Mahogany Oak"
+      },
+      "30": {
+        "color": "#5C5350",
+        "name": "Burnt Sienna"
+      },
+      "10": {
+        "color": "#9C8F8C",
+        "name": "Cocoa Bean"
+      }
+    },
+    "name": "Rustic Retreat"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#362A28",
+        "name": "Amber Brown"
+      },
+      "30": {
+        "color": "#654F4C",
+        "name": "Chestnut Roast"
+      },
+      "10": {
+        "color": "#A48987",
+        "name": "Toasted Caramel"
+      }
+    },
+    "name": "Autumnal Hues"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#3B3137",
+        "name": "Plum Purple"
+      },
+      "30": {
+        "color": "#6A5862",
+        "name": "Velvet Aubergine"
+      },
+      "10": {
+        "color": "#AA95A0",
+        "name": "Mauve Mist"
+      }
+    },
+    "name": "Elegant Twilight"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#28373E",
+        "name": "Teal Tint"
+      },
+      "30": {
+        "color": "#506B7B",
+        "name": "Cerulean Crest"
+      },
+      "10": {
+        "color": "#889DAC",
+        "name": "Sky Blue Grey"
+      }
+    },
+    "name": "Polished Blue"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#27271E",
+        "name": "Dark Olive"
+      },
+      "30": {
+        "color": "#524F3A",
+        "name": "Mushroom Taupe"
+      },
+      "10": {
+        "color": "#87856E",
+        "name": "Boulder Gray"
+      }
+    },
+    "name": "Earthy Palette"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#332F22",
+        "name": "Smoky Olive"
+      },
+      "30": {
+        "color": "#635F3C",
+        "name": "Muddy Brown"
+      },
+      "10": {
+        "color": "#A3A287",
+        "name": "Beige Blur"
+      }
+    },
+    "name": "Muted Tones"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#0D0D56",
+        "name": "Midnight Sapphire"
+      },
+      "30": {
+        "color": "#3A9C84",
+        "name": "Emerald Tide"
+      },
+      "10": {
+        "color": "#F2F1B9",
+        "name": "Sandy Gold"
+      }
+    },
+    "name": "Deep Sea"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#580B18",
+        "name": "Crimson Mahogany"
+      },
+      "30": {
+        "color": "#CB762A",
+        "name": "Amber Flame"
+      },
+      "10": {
+        "color": "#FFD700",
+        "name": "Goldenrod"
+      }
+    },
+    "name": "Fiery Sunset"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#011D41",
+        "name": "Navy Indigo"
+      },
+      "30": {
+        "color": "#5F7E97",
+        "name": "Slate Blue"
+      },
+      "10": {
+        "color": "#A0C1C2",
+        "name": "Cool Mist"
+      }
+    },
+    "name": "Marine Breeze"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#0A3931",
+        "name": "Evergreen"
+      },
+      "30": {
+        "color": "#6AA07D",
+        "name": "Mossy Green"
+      },
+      "10": {
+        "color": "#C1DFC4",
+        "name": "Fern Frost"
+      }
+    },
+    "name": "Enchanted Forest"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#4A012D",
+        "name": "Mulberry Wine"
+      },
+      "30": {
+        "color": "#A41678",
+        "name": "Orchid Haze"
+      },
+      "10": {
+        "color": "#F6D1E5",
+        "name": "Blushing Petal"
+      }
+    },
+    "name": "Twilight Bloom"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#4286f4",
+        "name": "Electric Blue"
+      },
+      "30": {
+        "color": "#ff4d4d",
+        "name": "Vibrant Red"
+      },
+      "10": {
+        "color": "#ffd34d",
+        "name": "Golden Yellow"
+      }
+    },
+    "name": "Electric Vibes"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#5eff5e",
+        "name": "Lime Burst"
+      },
+      "30": {
+        "color": "#8c1aff",
+        "name": "Royal Purple"
+      },
+      "10": {
+        "color": "#ffbf00",
+        "name": "Sunny Orange"
+      }
+    },
+    "name": "Neon Royale"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#ff944d",
+        "name": "Tropical Orange"
+      },
+      "30": {
+        "color": "#4da6ff",
+        "name": "Sky Blue"
+      },
+      "10": {
+        "color": "#d94dff",
+        "name": "Berry Pink"
+      }
+    },
+    "name": "Tropicana"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#ff9933",
+        "name": "Mango Tango"
+      },
+      "30": {
+        "color": "#cc66ff",
+        "name": "Orchid Haze"
+      },
+      "10": {
+        "color": "#66ccff",
+        "name": "Icy Blue"
+      }
+    },
+    "name": "Tropical Twilight"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#ff66b3",
+        "name": "Bubblegum Pink"
+      },
+      "30": {
+        "color": "#00cc99",
+        "name": "Seafoam Green"
+      },
+      "10": {
+        "color": "#ffcc00",
+        "name": "Sunshine Yellow"
+      }
+    },
+    "name": "Candy Beach"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#1E293B",
+        "name": "Midnight Blue"
+      },
+      "30": {
+        "color": "#38516D",
+        "name": "Deep Ocean"
+      },
+      "10": {
+        "color": "#6A91BC",
+        "name": "Dusky Sky"
+      }
+    },
+    "name": "Dark Marine"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#3A3F54",
+        "name": "Slate Gray"
+      },
+      "30": {
+        "color": "#5B638B",
+        "name": "Steel Blue"
+      },
+      "10": {
+        "color": "#8795B1",
+        "name": "Misty Horizon"
+      }
+    },
+    "name": "Shadow Steel"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#353759",
+        "name": "Deep Purple"
+      },
+      "30": {
+        "color": "#535476",
+        "name": "Twilight Violet"
+      },
+      "10": {
+        "color": "#8C8AB7",
+        "name": "Lavender Mist"
+      }
+    },
+    "name": "Nightfall Dreams"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#414E61",
+        "name": "Stormy Sea"
+      },
+      "30": {
+        "color": "#627593",
+        "name": "Dusk Blue"
+      },
+      "10": {
+        "color": "#95A4B8",
+        "name": "Silent Shore"
+      }
+    },
+    "name": "Mystic Waters"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#292F45",
+        "name": "Deep Indigo"
+      },
+      "30": {
+        "color": "#4E5980",
+        "name": "Nightshade"
+      },
+      "10": {
+        "color": "#878FB9",
+        "name": "Moonlit Mist"
+      }
+    },
+    "name": "Enigma Nights"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#305879",
+        "name": "Deep Sea Blue"
+      },
+      "30": {
+        "color": "#5C8C55",
+        "name": "Moss Green"
+      },
+      "10": {
+        "color": "#C68C3D",
+        "name": "Amber"
+      }
+    },
+    "name": "Serene Waters"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#303030",
+        "name": "Charcoal"
+      },
+      "30": {
+        "color": "#AB8C39",
+        "name": "Mustard"
+      },
+      "10": {
+        "color": "#D64737",
+        "name": "Crimson"
+      }
+    },
+    "name": "Dark Sophistication"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#56297B",
+        "name": "Royal Plum"
+      },
+      "30": {
+        "color": "#8C4C99",
+        "name": "Lavender"
+      },
+      "10": {
+        "color": "#CD8C3D",
+        "name": "Gold Nugget"
+      }
+    },
+    "name": "Enchanted Night"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#484848",
+        "name": "Slate"
+      },
+      "30": {
+        "color": "#C68C3D",
+        "name": "Amber"
+      },
+      "10": {
+        "color": "#D64737",
+        "name": "Crimson"
+      }
+    },
+    "name": "Modern Minimalism"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#601F7D",
+        "name": "Deep Orchid"
+      },
+      "30": {
+        "color": "#389499",
+        "name": "Teal"
+      },
+      "10": {
+        "color": "#C68C3D",
+        "name": "Amber"
+      }
+    },
+    "name": "Mysterious Harmony"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#0D1137",
+        "name": "Midnight Purple"
+      },
+      "30": {
+        "color": "#214AA5",
+        "name": "Ocean Blue"
+      },
+      "10": {
+        "color": "#FDDA24",
+        "name": "Luminous Yellow"
+      }
+    },
+    "name": "Deep Sea"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#2A2D34",
+        "name": "Steel Gray"
+      },
+      "30": {
+        "color": "#6D88BF",
+        "name": "Slate Blue"
+      },
+      "10": {
+        "color": "#F6BC0B",
+        "name": "Goldenrod"
+      }
+    },
+    "name": "Night Sky"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#1F1F1F",
+        "name": "Obsidian Black"
+      },
+      "30": {
+        "color": "#7D7D7D",
+        "name": "Smoke Gray"
+      },
+      "10": {
+        "color": "#FF5E5E",
+        "name": "Crimson Red"
+      }
+    },
+    "name": "Shadow"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#16203F",
+        "name": "Deep Indigo"
+      },
+      "30": {
+        "color": "#7A9ACB",
+        "name": "Sky Blue"
+      },
+      "10": {
+        "color": "#E8C547",
+        "name": "Amber"
+      }
+    },
+    "name": "Twilight"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#323232",
+        "name": "Charcoal"
+      },
+      "30": {
+        "color": "#979797",
+        "name": "Silver Gray"
+      },
+      "10": {
+        "color": "#FF681D",
+        "name": "Tangerine Orange"
+      }
+    },
+    "name": "Dark Ember"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#2D3142",
+        "name": "Midnight Navy"
+      },
+      "30": {
+        "color": "#667292",
+        "name": "Steel Blue"
+      },
+      "10": {
+        "color": "#F3D34A",
+        "name": "Goldenrod"
+      }
+    },
+    "name": "Deep Sea"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#282F3D",
+        "name": "Stormy Sky"
+      },
+      "30": {
+        "color": "#5D6D7E",
+        "name": "Slate Gray"
+      },
+      "10": {
+        "color": "#E74C3C",
+        "name": "Crimson"
+      }
+    },
+    "name": "Dusk"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#1A1A1D",
+        "name": "Charcoal"
+      },
+      "30": {
+        "color": "#44444A",
+        "name": "Gunmetal"
+      },
+      "10": {
+        "color": "#FF6347",
+        "name": "Tomato"
+      }
+    },
+    "name": "Nocturnal"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#2C2C34",
+        "name": "Dark Slate"
+      },
+      "30": {
+        "color": "#666672",
+        "name": "Grayish Blue"
+      },
+      "10": {
+        "color": "#F5B041",
+        "name": "Mellow Yellow"
+      }
+    },
+    "name": "Moonlight"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#24252A",
+        "name": "Ink Black"
+      },
+      "30": {
+        "color": "#5C606B",
+        "name": "Smoke Gray"
+      },
+      "10": {
+        "color": "#7BC8F6",
+        "name": "Sky Blue"
+      }
+    },
+    "name": "Nightfall"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#2C2C2C",
+        "name": "Midnight Black"
+      },
+      "30": {
+        "color": "#7A7A7A",
+        "name": "Steel Gray"
+      },
+      "10": {
+        "color": "#FFCD00",
+        "name": "Golden Yellow"
+      }
+    },
+    "name": "Dark Mode Fishing"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#12232E",
+        "name": "Deep Ocean Blue"
+      },
+      "30": {
+        "color": "#3A506B",
+        "name": "Slate Blue"
+      },
+      "10": {
+        "color": "#FF8552",
+        "name": "Coral Orange"
+      }
+    },
+    "name": "Oceanic Fishing"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#272341",
+        "name": "Royal Purple"
+      },
+      "30": {
+        "color": "#6B4E71",
+        "name": "Amethyst"
+      },
+      "10": {
+        "color": "#FFC72C",
+        "name": "Sunshine Yellow"
+      }
+    },
+    "name": "Mystic Fishing"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#161B33",
+        "name": "Midnight Navy"
+      },
+      "30": {
+        "color": "#364E6F",
+        "name": "Steel Blue"
+      },
+      "10": {
+        "color": "#FF6F47",
+        "name": "Tangerine Orange"
+      }
+    },
+    "name": "Nautical Fishing"
+  },
+  {
+    "colors": {
+      "60": {
+        "color": "#212121",
+        "name": "Slate Gray"
+      },
+      "30": {
+        "color": "#474747",
+        "name": "Charcoal Gray"
+      },
+      "10": {
+        "color": "#FF4081",
+        "name": "Fuchsia Pink"
+      }
+    },
+    "name": "Minimalist Fishing"
+  }
+]
