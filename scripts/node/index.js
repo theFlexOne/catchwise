@@ -16,15 +16,17 @@ async function getFishBaseFishIds() {
   const fishData = JSON.parse(fs.readFileSync("./data/newFishData.json"));
   const fishSpecies = fishData.map((fish) => fish.species);
 
-  const idFetches = fishSpecies.reduce((acc, species) => {
-    if (species.includes("/")) return acc;
-    const url = new URL("https://www.fishbase.org.au/v4/search");
-    url.searchParams.append("q", species);
+  const idFetches = fishSpecies.reduce(
+    (acc, species) => {
+      const url = new URL("https://www.fishbase.org.au/v4/search");
+      url.searchParams.append("q", species);
 
-    acc[0].push(axios.get(url));
-    acc[1].push(species);
-    return acc;
-  }, [[],[]]);
+      acc[0].push(axios.get(url));
+      acc[1].push(species);
+      return acc;
+    },
+    [[], []]
+  );
 
   const responseList = await Promise.all(idFetches[0]);
   const idMap = responseList.reduce((acc, res, i) => {
