@@ -1,16 +1,13 @@
 import Map from "../components/Map";
 
+type LatLngLiteral = google.maps.LatLngLiteral;
+
 interface LandingPageProps {
-  lat: number;
-  lon: number;
+  coords: LatLngLiteral;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ lat, lon }) => {
-  return (
-    <div className="flex-grow">
-      <Map lat={lat} lon={lon} className="w-full h-full" />
-    </div>
-  );
+const LandingPage: React.FC<LandingPageProps> = ({ coords }) => {
+  return <Map />;
 };
 
 export default LandingPage;

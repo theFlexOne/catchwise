@@ -1,7 +1,9 @@
-// import ColorSchemes from "./components/ColorSchemes";
 import { useEffect, useState } from "react";
+import ColorSchemes from "./components/ColorSchemes";
 import RootLayout from "./layouts/RootLayout";
 import LandingPage from "./pages/LandingPage";
+
+type LatLonLiteral = google.maps.LatLngLiteral;
 
 interface Link {
   url: string;
@@ -15,32 +17,40 @@ const links: Link[] = [
 ];
 
 function App() {
-  const [position, setPosition] = useState<GeolocationPosition>();
-
+  const [coords, setCoords] = useState<LatLonLiteral | null>(null);
   const [coordinatesError, setCoordinatesError] =
     useState<GeolocationPositionError | null>(null);
-  const [googleMapsError, setGoogleMapsError] = useState<Error | null>(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        setPosition(position);
+        const { latitude, longitude } = position.coords;
+        setCoords({ lat: latitude, lng: longitude });
       },
-      (error) => {
-        setCoordinatesError(error);
+      () => {
+        const url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${
+          import.meta.env.GOOGLE_MAPS_API_KEY
+        }`;
+        fetch(url, {
+          method: "POST",
+          body: JSON.stringify({ considerIp: true }),
+        })
+          .then((res) => res.json())
+          .then(console.log);
       }
     );
   }, []);
 
-  position && console.log(position.coords);
-
   return (
     <RootLayout links={links}>
-      {position?.coords && (
-        <LandingPage
-          lat={position.coords.latitude}
-          lon={position.coords.longitude}
-        />
+      {coords ? (
+        <LandingPage coords={coords} />
+      ) : (
+        <div className="flex justify-center items-center h-screen">
+          <p className="text-4xl text-white">
+            {coordinatesError?.message ?? "Loading..."}
+          </p>
+        </div>
       )}
     </RootLayout>
   );
