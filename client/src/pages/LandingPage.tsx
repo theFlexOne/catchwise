@@ -7,7 +7,7 @@ interface LandingPageProps {
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ coords }) => {
-  return <Map />;
+  return <Map center={coords} />;
 };
 
 export default LandingPage;

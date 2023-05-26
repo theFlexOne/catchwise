@@ -2,6 +2,17 @@ import fs from "fs";
 import axios from "axios";
 import { JSDOM } from "jsdom";
 
+function listAllLakeCounties() {
+  const lakeData = JSON.parse(fs.readFileSync("./data/serverLakeData.json"));
+
+  const countyNames = new Set(
+    lakeData.map((lake) => lake.county.toLowerCase())
+  );
+  console.log(countyNames);
+}
+
+listAllLakeCounties();
+
 function formatLakeFishSpecies() {
   const lakeData = JSON.parse(fs.readFileSync("./data/newNewNewLakeData.json"));
 
@@ -20,8 +31,6 @@ function formatLakeFishSpecies() {
     JSON.stringify(newNewNewLakeData, null, 2)
   );
 }
-
-formatLakeFishSpecies();
 
 function createLakeFishIdsList() {
   const lakeData = JSON.parse(fs.readFileSync("./data/newLakeData.json"));

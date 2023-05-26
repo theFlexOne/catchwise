@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ColorSchemes from "./components/ColorSchemes";
 import RootLayout from "./layouts/RootLayout";
 import LandingPage from "./pages/LandingPage";
+import { LakesProvider } from "./context/LakesContext";
 
 type LatLonLiteral = google.maps.LatLngLiteral;
 
@@ -42,17 +43,19 @@ function App() {
   }, []);
 
   return (
-    <RootLayout links={links}>
-      {coords ? (
-        <LandingPage coords={coords} />
-      ) : (
-        <div className="flex justify-center items-center h-screen">
-          <p className="text-4xl text-white">
-            {coordinatesError?.message ?? "Loading..."}
-          </p>
-        </div>
-      )}
-    </RootLayout>
+    <LakesProvider>
+      <RootLayout links={links}>
+        {coords ? (
+          <LandingPage coords={coords} />
+        ) : (
+          <div className="flex justify-center items-center h-screen">
+            <p className="text-4xl text-white">
+              {coordinatesError?.message ?? "Loading..."}
+            </p>
+          </div>
+        )}
+      </RootLayout>
+    </LakesProvider>
   );
 }
 

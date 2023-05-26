@@ -2,6 +2,7 @@ package com.flexone.catchwise.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.flexone.catchwise.dto.LakeFishResponse;
+import com.flexone.catchwise.dto.LakeResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,9 +43,7 @@ public class Lake {
     @JoinTable(name = "lake_fish", joinColumns = @JoinColumn(name = "lake_id"), inverseJoinColumns = @JoinColumn(name = "fish_id"))
     private Set<Fish> fish = new HashSet<>();
 
-    public List<LakeFishResponse> getLakeFishResponses() {
-        return fish.stream()
-                .map(f -> new LakeFishResponse(f.getId(), f.getName(), "/fish/" + f.getId()))
-                .collect(Collectors.toList());
+    public String getLakeFishUrl() {
+        return "/api/v1/lakes/" + this.id + "/fish";
     }
 }

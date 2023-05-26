@@ -32,8 +32,7 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        seed();
-
+        seed();
     }
 
     public void seed() {

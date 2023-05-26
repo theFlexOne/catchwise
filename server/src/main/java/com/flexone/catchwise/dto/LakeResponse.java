@@ -24,7 +24,7 @@ public class LakeResponse {
     private String nearestTown;
     private Coordinates coordinates;
 
-    private List<LakeFishResponse> fish;
+    private String fishUrl;
 
 
 }
