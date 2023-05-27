@@ -4,7 +4,7 @@ import {
 } from "@ubilabs/google-maps-react-hooks";
 import { useRef, useState } from "react";
 
-const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 const DEFAULT_CENTER = { lat: 44.9537, lng: -93.09 };
 

@@ -1,0 +1,11 @@
+{
+  "name": "catchwise",
+  "version": "1.0.0",
+  "description": "An application to help people who fish",
+  "scripts": {
+    "init": "npm i ./client && npm i ./scripts/node",
+    "front": "npm run dev --prefix client"
+  },
+  "author": "flexone",
+  "license": "MIT"
+}
