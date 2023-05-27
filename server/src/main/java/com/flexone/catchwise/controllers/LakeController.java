@@ -60,6 +60,7 @@ public class LakeController {
             @RequestParam double maxLng
     ) {
         List<Lake> lakes = lakeService.findAllInRange(minLat, maxLat, minLng, maxLng);
+        log.info(minLat + " " + maxLat + " " + minLng + " " + maxLng);
         log.info("Found {} lakes in range", lakes.size());
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }

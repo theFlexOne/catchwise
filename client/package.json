@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.15.2",
     "@react-google-maps/api": "^2.18.1",
+    "@ubilabs/google-maps-react-hooks": "^2.0.2",
     "axios": "^1.4.0",
     "google-map-react": "^2.2.1",
     "react": "^18.2.0",

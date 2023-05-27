@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ColorSchemes from "./components/ColorSchemes";
 import RootLayout from "./layouts/RootLayout";
 import LandingPage from "./pages/LandingPage";
-import { LakesProvider } from "./context/LakesContext";
+import axios from "axios";
 
 type LatLonLiteral = google.maps.LatLngLiteral;
 
@@ -32,30 +32,23 @@ function App() {
         const url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${
           import.meta.env.GOOGLE_MAPS_API_KEY
         }`;
-        fetch(url, {
-          method: "POST",
-          body: JSON.stringify({ considerIp: true }),
-        })
-          .then((res) => res.json())
-          .then(console.log);
+        axios.post(url, { considerIp: true }).then(console.log);
       }
     );
   }, []);
 
   return (
-    <LakesProvider>
-      <RootLayout links={links}>
-        {coords ? (
-          <LandingPage coords={coords} />
-        ) : (
-          <div className="flex justify-center items-center h-screen">
-            <p className="text-4xl text-white">
-              {coordinatesError?.message ?? "Loading..."}
-            </p>
-          </div>
-        )}
-      </RootLayout>
-    </LakesProvider>
+    <RootLayout links={links}>
+      {coords ? (
+        <LandingPage coords={coords} />
+      ) : (
+        <div className="flex justify-center items-center h-screen">
+          <p className="text-4xl text-white">
+            {coordinatesError?.message ?? "Loading..."}
+          </p>
+        </div>
+      )}
+    </RootLayout>
   );
 }
 
