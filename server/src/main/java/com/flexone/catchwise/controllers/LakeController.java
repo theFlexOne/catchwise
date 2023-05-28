@@ -3,12 +3,11 @@ package com.flexone.catchwise.controllers;
 import com.flexone.catchwise.domain.Fish;
 import com.flexone.catchwise.domain.Lake;
 import com.flexone.catchwise.dto.FishResponse;
+import com.flexone.catchwise.dto.LakeNameResponse;
 import com.flexone.catchwise.dto.LakeResponse;
 import com.flexone.catchwise.services.LakeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,8 +46,13 @@ public class LakeController {
     }
 
     @GetMapping
-    public List<LakeResponse> getAllLakes() {
-        List<Lake> lakes = lakeService.findAll();
+    public List<LakeResponse> getAllLakes(@RequestParam(required = false, value = "false") Boolean includeEmpty) {
+        List<Lake> lakes;
+        if (includeEmpty) {
+            lakes = lakeService.findAll();
+        } else {
+            lakes = lakeService.findAllWithFish();
+        }
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }
 
@@ -63,6 +67,12 @@ public class LakeController {
         log.info(minLat + " " + maxLat + " " + minLng + " " + maxLng);
         log.info("Found {} lakes in range", lakes.size());
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+    }
+
+    @GetMapping("/names")
+    public List<LakeNameResponse> getAllLakeNames() {
+        List<Lake> lakes = lakeService.findAll();
+        return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
     }
 
     @GetMapping("/{id}")

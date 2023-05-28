@@ -34,4 +34,10 @@ public class LakeServiceImpl  implements LakeService {
         return lakeRepository.findAllInRange(minLat, maxLat, minLng, maxLng);
     }
 
+    @Override
+    public List<Lake> findAllWithFish() {
+        return lakeRepository.findAllWithFish();
+
+    }
+
 }

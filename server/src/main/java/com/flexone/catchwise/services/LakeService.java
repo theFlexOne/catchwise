@@ -11,4 +11,6 @@ public interface LakeService {
     List<Lake> findAll();
 
     List<Lake> findAllInRange(double minLat, double maxLat, double minLng, double maxLng);
+
+    List<Lake> findAllWithFish();
 }

@@ -4,7 +4,8 @@
   "description": "An application to help people who fish",
   "scripts": {
     "init": "npm i ./client && npm i ./scripts/node",
-    "front": "npm run dev --prefix client"
+    "front": "npm run dev --prefix client",
+    "back": "idea64 ./server"
   },
   "author": "flexone",
   "license": "MIT"

@@ -1,44 +1,47 @@
 import { Marker, InfoWindow } from "@react-google-maps/api";
 import axios from "axios";
 import { useState } from "react";
-import { FieldValues } from "../enums/FieldValues";
 import buildUrl from "../helpers/buildUrl";
 import { Lake } from "../types/Lake";
-
-const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY as string;
+import useGoogleApi from "../hooks/useGoogleApi";
+import { Fish } from "../types/Fish";
 
 const SERVER_URL = import.meta.env.VITE_SERVER_URL as string;
-// const DETAILS_URL = "https://maps.googleapis.com/maps/api/place/details/json";
-const PLACES_SEARCH_URL =
-  "https://maps.googleapis.com/maps/api/place/findplacefromtext/json" as string;
 
 interface LakeMarkerProps {
-  lake: any;
+  lake: Lake;
   children?: React.ReactNode;
-  onClick?: (lake: any) => void;
+  onClick?: () => void;
   isSelected?: boolean;
 }
 
-const LakeMarker = ({ lake, onClick, isSelected }: LakeMarkerProps) => {
-  const [fishList, setFishList] = useState<any[] | null>(null);
-  const [googleLakeDetails, setGoogleLakeDetails] = useState<any | null>(null);
+const LakeMarker = ({ onClick, lake, isSelected }: LakeMarkerProps) => {
+  const [fishList, setFishList] = useState<Fish[] | null>(null);
+  const [lakeName, setLakeName] = useState<string | null>(null);
+
+  const { searchForPlace } = useGoogleApi();
 
   const handleMarkerClick = async () => {
-    console.log(lake);
-
-    if (onClick) onClick(lake);
+    if (onClick) onClick();
 
     if (fishList == null) {
-      const fishList = await fetchFishList(lake);
+      const fishList = await fetchLakeFishList(lake);
       setFishList(fishList);
     }
-    if (googleLakeDetails == null) {
-      const lakeDetails = await fetchGoogleLakeDetails(lake);
-      setGoogleLakeDetails(lakeDetails);
+
+    if (lakeName == null) {
+      const cleanLakeName = lake.name
+        .split(" ")
+        .filter((w) => !w.match(/[()]/))
+        .join(" ");
+      const searchData = await searchForPlace(`${cleanLakeName} lake`);
+
+      let name = (searchData?.candidates[0]?.name as string) || "";
+      if (!name.match(/lake/i)) name = lake.name;
+
+      setLakeName(name);
     }
   };
-
-  googleLakeDetails && console.log(googleLakeDetails);
 
   return (
     <Marker
@@ -51,41 +54,33 @@ const LakeMarker = ({ lake, onClick, isSelected }: LakeMarkerProps) => {
     >
       {fishList?.length && isSelected && (
         <InfoWindow>
-          <div className="capitalize">
-            <h2 className="text-2xl font-semibold mb-2">{lake.name}</h2>
-            <ul className="flex flex-col gap-2 px-2 font-semibold text-lg">
-              {fishList.map((fish) => (
-                <li key={fish.id}>{fish.name}</li>
-              ))}
-            </ul>
-          </div>
+          {lakeName ? (
+            <div className="capitalize">
+              <h2 className="text-2xl font-semibold mb-2">{lakeName}</h2>
+              <ul className="flex flex-col gap-2 px-2 font-medium tracking-wide">
+                {fishList.map((fish) => (
+                  <li key={fish.id}>{fish.name}</li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="capitalize">
+              <div className="bg-neutral-500 rounded-sm w-[20ch] h-4 mb-2 px-4 transition-opacity" />
+              <ul className="flex flex-col gap-2 px-2 font-medium tracking-wide">
+                {fishList.map((fish) => (
+                  <li key={fish.id}>{fish.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </InfoWindow>
       )}
     </Marker>
   );
 };
 
-async function fetchFishList(lake: Lake) {
+async function fetchLakeFishList(lake: Lake) {
   const url = buildUrl(`${SERVER_URL}/api/v1/lakes/${lake.id}/fish`);
-
-  try {
-    const response = await axios.get(url);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-async function fetchGoogleLakeDetails(lake: Lake) {
-  const fields = [FieldValues.place_id];
-
-  const params = {
-    input: `lake ${lake.name}, ${lake.county}`,
-    inputtype: "textquery",
-    key: API_KEY,
-  };
-
-  const url = buildUrl(PLACES_SEARCH_URL, params);
 
   try {
     const response = await axios.get(url);

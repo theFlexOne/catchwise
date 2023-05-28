@@ -4,17 +4,16 @@ import { useRef, useState } from "react";
 import LakeMarker from "./LakeMarker";
 import buildUrl from "../helpers/buildUrl";
 import { Lake } from "../types/Lake";
+import MapSearchBar from "./MapSearchBar";
+import useGooglePlaces from "../hooks/useGoogleApi";
 import { FieldValues } from "../enums/FieldValues";
 
-const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY as string;
 const SERVER_URL = import.meta.env.VITE_SERVER_URL as string;
-
-const googleApiConfig = {
-  googleMapsApiKey: API_KEY,
+const GOOGLE_API_CONFIG = {
+  googleMapsApiKey: import.meta.env.VITE_GOOGLE_API_KEY as string,
   mapIds: ["45aff3ba656e7008"],
 };
-
-const mapOptions: MapOptions = {
+const MAP_OPTIONS: MapOptions = {
   mapId: "45aff3ba656e7008",
   disableDefaultUI: true,
   minZoom: 11,
@@ -22,11 +21,19 @@ const mapOptions: MapOptions = {
 };
 
 export default function Map({ center, zoom = 14 }: MapProps) {
-  const { isLoaded, loadError } = useJsApiLoader(googleApiConfig);
+  const { isLoaded, loadError } = useJsApiLoader(GOOGLE_API_CONFIG);
+  const [mapObject, setMapObject] = useState<google.maps.Map | null>(null); //? could be a ref if all interactions are done via callbacks/handlers
 
   const [visibleLakes, setVisibleLakes] = useState<Lake[]>([]);
-  const [mapObject, setMapObject] = useState<google.maps.Map | null>(null); // could be a ref if all interactions are done via callbacks/handlers
   const [selectedLake, setSelectedLake] = useState<Lake | null>(null);
+  const [selectedPlaceDetails, setSelectedPlaceDetails] = useState<any | null>(
+    null
+  );
+
+  const [currentCenter, setCurrentCenter] = useState<LatLngLiteral>(center);
+  const [currentBounds, setCurrentBounds] = useState<LatLngBounds | null>(null);
+
+  const { searchForPlace, getPlaceDetails } = useGooglePlaces();
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -54,41 +61,67 @@ export default function Map({ center, zoom = 14 }: MapProps) {
     if (!mapObject) return;
     if (debounceRef.current) clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(() => {
-      fetchLakesWithinBounds(mapObject.getBounds(), setVisibleLakes);
+      const newBounds = mapObject.getBounds();
+      if (!newBounds) return;
+
+      const ne = newBounds.getNorthEast();
+      const sw = newBounds.getSouthWest();
+      if (!currentBounds?.contains(ne) || !currentBounds?.contains(sw))
+        fetchLakesWithinBounds(newBounds, setVisibleLakes);
+
+      setCurrentBounds(newBounds);
     }, 150);
   }
 
   function handleMarkerClick(lake: Lake) {
-    setSelectedLake(lake);
+    return () => setSelectedLake(lake);
   }
 
-  selectedLake && console.log(selectedLake);
+  async function handleSubmit(input: string) {
+    input = input.trim() + " lake";
+
+    const fields = [FieldValues.name, FieldValues.place_id];
+
+    const placeSearch = await searchForPlace(input, fields);
+    const placeId = placeSearch?.candidates[0]?.place_id || null;
+
+    if (placeId) {
+      const details = await getPlaceDetails(placeId, fields);
+      console.log(details);
+      const newCenter = details?.result.geometry.location as LatLngLiteral;
+      mapObject?.setCenter(newCenter);
+    }
+  }
 
   if (loadError) return <div>Error loading map. Try refreshing the page?</div>;
 
   return isLoaded ? (
-    <GoogleMap
-      mapContainerStyle={{
-        position: "absolute",
-        inset: 0,
-        maxWidth: "960px",
-        marginInline: "auto",
-      }}
-      options={mapOptions}
-      center={center}
-      zoom={zoom}
-      onLoad={handleLoad}
-      onBoundsChanged={handleBoundsChange}
-    >
-      {visibleLakes.map((lake) => (
-        <LakeMarker
-          key={lake.id}
-          lake={lake}
-          onClick={handleMarkerClick}
-          isSelected={selectedLake?.id === lake.id}
-        />
-      ))}
-    </GoogleMap>
+    <div className="absolute inset-0 max-w-[960px] mx-auto">
+      <GoogleMap
+        mapContainerStyle={{
+          position: "absolute",
+          inset: 0,
+        }}
+        options={MAP_OPTIONS}
+        center={currentCenter}
+        zoom={zoom}
+        onLoad={handleLoad}
+        onBoundsChanged={handleBoundsChange}
+      >
+        {visibleLakes.map((lake) => (
+          <LakeMarker
+            key={lake.id}
+            lake={lake}
+            onClick={handleMarkerClick(lake)}
+            isSelected={selectedLake?.id === lake.id}
+          />
+        ))}
+      </GoogleMap>
+      <MapSearchBar
+        className="absolute z-10 top-4 right-0"
+        onSubmit={handleSubmit}
+      />
+    </div>
   ) : (
     <div>Loading...</div>
   );
@@ -126,3 +159,5 @@ type MapProps = {
 };
 type LatLngLiteral = google.maps.LatLngLiteral;
 type MapOptions = google.maps.MapOptions;
+type LatLngBounds = google.maps.LatLngBounds;
+type LatLngBoundsLiteral = google.maps.LatLngBoundsLiteral;
