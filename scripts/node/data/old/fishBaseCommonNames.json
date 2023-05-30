@@ -1,0 +1,244 @@
+{
+  "atractosteus spatula": [
+    "Alligator gar"
+  ],
+  "oncorhynchus apache": [
+    "Apache trout"
+  ],
+  "thymallus arcticus": [
+    "Arctic grayling"
+  ],
+  "ictiobus cyprinellus": [
+    "Bigmouth buffalo"
+  ],
+  "ameiurus melas": [
+    "Black bullhead"
+  ],
+  "pomoxis nigromaculatus": [
+    "Black crappie"
+  ],
+  "ictalurus furcatus": [
+    "Blue catfish"
+  ],
+  "lepomis macrochirus": [
+    "Bluegill"
+  ],
+  "amia calva": [
+    "Bowfin",
+    "Choupique",
+    "Cypress trout",
+    "Marshfish"
+  ],
+  "ameiurus nebulosus": [
+    "Brown bullhead"
+  ],
+  "salvelinus confluentus": [
+    "Bull trout"
+  ],
+  "lota lota": [
+    "Burbot",
+    "Ellpout"
+  ],
+  "cichla ocellaris": [
+    "Butterfly peacock bass",
+    "Peacock cichlid"
+  ],
+  "esox niger": [
+    "Chain pickerel"
+  ],
+  "ictalurus punctatus": [
+    "Channel catfish",
+    "Graceful catfish"
+  ],
+  "cyprinus carpio": [
+    "Common carp",
+    "European carp",
+    "German carp",
+    "Koi",
+    "Leather carp",
+    "Mirror carp"
+  ],
+  "pylodictis olivaris": [
+    "Flathead catfish"
+  ],
+  "lepisosteus platyrhincus": [
+    "Florida gar"
+  ],
+  "aplodinotus grunniens": [
+    "Freshwater drum"
+  ],
+  "oncorhynchus aguabonita": [
+    "Golden trout"
+  ],
+  "ctenopharyngodon idella": [
+    "Grass carp",
+    "White amur"
+  ],
+  "lepomis cyanellus": [
+    "Green sunfish"
+  ],
+  "salvelinus namaycush": [
+    "Great Lake trout",
+    "Lake trout",
+    "Siscowet"
+  ],
+  "coregonus clupeaformis": [
+    "Lake whitefish"
+  ],
+  "micropterus salmoides": [
+    "Green trout",
+    "Largemouth bass"
+  ],
+  "lepisosteus osseus": [
+    "Longnose gar"
+  ],
+  "prosopium williamsoni": [
+    "Mountain whitefish",
+    "Rocky Mountain whitefish"
+  ],
+  "esox masquinongy": [
+    "Allegheny River pike",
+    "Barred muskie",
+    "Great pike",
+    "Lunge",
+    "Mascalonge",
+    "Muskellunge",
+    "Muskie",
+    "Ohio muskie",
+    "Tiger",
+    "White pickerel",
+    "White pike",
+    "Wisconsin muskie"
+  ],
+  "esox lucius": [
+    "American pike",
+    "Common pike",
+    "Great Lakes pike",
+    "Great northern pickerel",
+    "Jack",
+    "Jackfish",
+    "Northern pike",
+    "Pickerel",
+    "Snake",
+    "Wolf"
+  ],
+  "ptychocheilus oregonensis": [
+    "Northern pikeminnow",
+    "Northern pikeminnow"
+  ],
+  "astronotus ocellatus": [
+    "Marble cichlid",
+    "Oscar",
+    "Oscar",
+    "Red oscar",
+    "Velvet cichlid"
+  ],
+  "polyodon spathula": [
+    "Mississippi paddlefish",
+    "Paddlefish"
+  ],
+  "lepomis gibbosus": [
+    "Pumpkinseed"
+  ],
+  "lepomis auritus": [
+    "Redbreast",
+    "Redbreast sunfish"
+  ],
+  "lepomis microlophus": [
+    "Redear sunfish"
+  ],
+  "micropterus coosae": [
+    "Redeye bass"
+  ],
+  "ambloplites rupestris": [
+    "Rock bass"
+  ],
+  "prosopium cylindraceum": [
+    "Menominee",
+    "Round whitefish"
+  ],
+  "sander canadensis": [
+    "Sauger"
+  ],
+  "micropterus cataractae": [
+    "Shoal bass",
+    "Shoal bass"
+  ],
+  "moxostoma macrolepidotum": [
+    "Shorthead redhorse"
+  ],
+  "lepisosteus platostomus": [
+    "Shortnose gar"
+  ],
+  "moxostoma anisurum": [
+    "Silver redhorse"
+  ],
+  "micropterus dolomieu": [
+    "Black bass",
+    "Bronzeback",
+    "Brown trout",
+    "Brownie",
+    "Gold bass",
+    "Green bass",
+    "Jumper",
+    "Redeye",
+    "Smallie",
+    "Smallmouth bass",
+    "Streaked-cheek river bass",
+    "Swago bass",
+    "Trout bass",
+    "White trout"
+  ],
+  "ictiobus bubalus": [
+    "Smallmouth buffalo"
+  ],
+  "cichla temensis": [
+    "Painted pavon",
+    "Royal pavon",
+    "Speckled pavon",
+    "Striped tucunare",
+    "Tucunare pinema"
+  ],
+  "micropterus punctulatus": [
+    "Spotted bass"
+  ],
+  "lepisosteus oculatus": [
+    "Spotted gar"
+  ],
+  "morone saxatilis": [
+    "Linesider",
+    "Roccus",
+    "Rock",
+    "Rockfish",
+    "Striped bass"
+  ],
+  "sander vitreus": [
+    "Blue pike",
+    "Dory",
+    "Glass eye",
+    "Gray pike",
+    "Marble Eye",
+    "Pike-perch",
+    "Walleye",
+    "Yellow pike-perch"
+  ],
+  "lepomis gulosus": [
+    "Warmouth"
+  ],
+  "morone chrysops": [
+    "White bass"
+  ],
+  "ameiurus catus": [
+    "White catfish"
+  ],
+  "morone mississippiensis": [
+    "Yellow bass"
+  ],
+  "ameiurus natalis": [
+    "Yellow bullhead"
+  ],
+  "perca flavescens": [
+    "Lake perch",
+    "Yellow perch"
+  ]
+}

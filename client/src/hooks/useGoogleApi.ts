@@ -30,7 +30,7 @@ export default function useGoogleApi() {
   ): Promise<any> {
     const url = new URL(googlePlacesServerEndpoint + "/details");
     const params = {
-      placeId,
+      place_id: placeId,
       fields: fields.length ? fields.join(",") : "",
     };
     url.search = new URLSearchParams(params).toString();

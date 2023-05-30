@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/lakes")
+@RequestMapping("/lakes")
 @RequiredArgsConstructor
 @Slf4j
 public class LakeController {
@@ -29,7 +29,7 @@ public class LakeController {
                 .state(lake.getCounty().getState().getName())
                 .nearestTown(lake.getNearestTown())
                 .coordinates(lake.getCoordinates())
-                .fishUrl(lake.getLakeFishUrl())
+                .fishUrl(lake.buildLakeFishUrl())
                 .build();
     }
 
@@ -46,13 +46,8 @@ public class LakeController {
     }
 
     @GetMapping
-    public List<LakeResponse> getAllLakes(@RequestParam(required = false, value = "false") Boolean includeEmpty) {
-        List<Lake> lakes;
-        if (includeEmpty) {
-            lakes = lakeService.findAll();
-        } else {
-            lakes = lakeService.findAllWithFish();
-        }
+    public List<LakeResponse> getAllLakes() {
+        List<Lake> lakes = lakeService.findAll();
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }
 

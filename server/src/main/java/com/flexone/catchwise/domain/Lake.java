@@ -1,22 +1,20 @@
 package com.flexone.catchwise.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.flexone.catchwise.dto.LakeFishResponse;
-import com.flexone.catchwise.dto.LakeResponse;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Entity
 @Data
 @Builder
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -43,7 +41,17 @@ public class Lake {
     @JoinTable(name = "lake_fish", joinColumns = @JoinColumn(name = "lake_id"), inverseJoinColumns = @JoinColumn(name = "fish_id"))
     private Set<Fish> fish = new HashSet<>();
 
-    public String getLakeFishUrl() {
+    public String buildLakeFishUrl() {
         return "/api/v1/lakes/" + this.id + "/fish";
+    }
+
+    public Double getLat() {
+        return this.coordinates.getLatitude();
+    }
+    public Double getLng() {
+        return this.coordinates.getLongitude();
+    }
+    public State getState() {
+        return this.county.getState();
     }
 }

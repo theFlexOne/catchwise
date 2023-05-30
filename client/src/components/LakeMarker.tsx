@@ -34,8 +34,8 @@ const LakeMarker = ({ onClick, lake, isSelected }: LakeMarkerProps) => {
         .split(" ")
         .filter((w) => !w.match(/[()]/))
         .join(" ");
-      const searchData = await searchForPlace(`${cleanLakeName} lake`);
-
+      const searchData = await searchForPlace(`"${cleanLakeName} lake"`);
+      console.log(searchData);
       let name = (searchData?.candidates[0]?.name as string) || "";
       if (!name.match(/lake/i)) name = lake.name;
 

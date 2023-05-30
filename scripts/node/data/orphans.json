@@ -1,0 +1,868 @@
+{
+  "10020000": [
+    {
+      "localId": "10020001",
+      "name": " (north portion)",
+      "countyId": 10,
+      "nearestTown": "victoria",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23010"
+    },
+    {
+      "localId": "10020002",
+      "name": " (south portion)",
+      "countyId": 10,
+      "nearestTown": "victoria",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23010"
+    }
+  ],
+  "15002800": [
+    {
+      "localId": "15002802",
+      "name": "lower west four-legged",
+      "countyId": 15,
+      "nearestTown": "",
+      "coordinates": {
+        "longitude": -95.279034,
+        "latitude": 47.638199
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23015"
+    },
+    {
+      "localId": "15002801",
+      "name": "upper west four-legged",
+      "countyId": 15,
+      "nearestTown": "",
+      "coordinates": {
+        "longitude": -95.261517,
+        "latitude": 47.645809
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23015"
+    }
+  ],
+  "17002100": [
+    {
+      "localId": "17002101",
+      "name": "warren",
+      "countyId": 17,
+      "nearestTown": "",
+      "coordinates": {
+        "longitude": -95.108739,
+        "latitude": 43.895472
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23017"
+    },
+    {
+      "localId": "17002102",
+      "name": "warren pond",
+      "countyId": 17,
+      "nearestTown": "windom",
+      "coordinates": {
+        "longitude": -95.098818,
+        "latitude": 43.888834
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23017"
+    }
+  ],
+  "19002800": [
+    {
+      "localId": "19002801",
+      "name": "north twin",
+      "countyId": 19,
+      "nearestTown": "",
+      "coordinates": {
+        "longitude": -93.277712,
+        "latitude": 44.737285
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23019"
+    },
+    {
+      "localId": "19002802",
+      "name": "south twin",
+      "countyId": 19,
+      "nearestTown": "",
+      "coordinates": {
+        "longitude": -93.276947,
+        "latitude": 44.735037
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23019"
+    }
+  ],
+  "27010100": [
+    {
+      "localId": "27010101",
+      "name": "turtle (north portion)",
+      "countyId": 27,
+      "nearestTown": "plymouth",
+      "coordinates": {
+        "longitude": -93.47427,
+        "latitude": 45.036776
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    },
+    {
+      "localId": "27010102",
+      "name": "turtle (south portion)",
+      "countyId": 27,
+      "nearestTown": "plymouth",
+      "coordinates": {
+        "longitude": -93.477476,
+        "latitude": 45.033872
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    }
+  ],
+  "27014000": [
+    {
+      "localId": "27014001",
+      "name": "french marsh (north)",
+      "countyId": 27,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    },
+    {
+      "localId": "27014002",
+      "name": "french marsh (south)",
+      "countyId": 27,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    }
+  ],
+  "27043900": [
+    {
+      "localId": "27043901",
+      "name": "(east portion)",
+      "countyId": 27,
+      "nearestTown": "corcoran",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    },
+    {
+      "localId": "27043902",
+      "name": "(west portion)",
+      "countyId": 27,
+      "nearestTown": "corcoran",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    }
+  ],
+  "27068700": [
+    {
+      "localId": "27068701",
+      "name": " (east)",
+      "countyId": 27,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    },
+    {
+      "localId": "27068702",
+      "name": " (west)",
+      "countyId": 27,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23027"
+    }
+  ],
+  "30005500": [
+    {
+      "localId": "30005501",
+      "name": " (ne portion)",
+      "countyId": 30,
+      "nearestTown": "cambridge",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23030"
+    },
+    {
+      "localId": "30005502",
+      "name": " (sw portion)",
+      "countyId": 30,
+      "nearestTown": "cambridge",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23030"
+    }
+  ],
+  "31003400": [
+    {
+      "localId": "31003401",
+      "name": "little o'brien",
+      "countyId": 31,
+      "nearestTown": "pengilly",
+      "coordinates": {
+        "longitude": -93.145954,
+        "latitude": 47.326954
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23031"
+    }
+  ],
+  "31132600": [
+    {
+      "localId": "31132601",
+      "name": "larue pit",
+      "countyId": 31,
+      "nearestTown": "nashwauk",
+      "coordinates": null,
+      "fishSpecies": [
+        {
+          "name": "black crappie",
+          "species": "pomoxis nigromaculatus"
+        },
+        {
+          "name": "bluegill",
+          "species": "lepomis macrochirus"
+        },
+        {
+          "name": "brook trout",
+          "species": ""
+        },
+        {
+          "name": "brown trout",
+          "species": "micropterus dolomieu"
+        },
+        {
+          "name": "green sunfish",
+          "species": "lepomis cyanellus"
+        },
+        {
+          "name": "hybrid sunfish",
+          "species": ""
+        },
+        {
+          "name": "largemouth bass",
+          "species": "micropterus salmoides"
+        },
+        {
+          "name": "northern pike",
+          "species": "esox lucius"
+        },
+        {
+          "name": "pumpkinseed",
+          "species": "lepomis gibbosus"
+        },
+        {
+          "name": "rainbow trout",
+          "species": ""
+        },
+        {
+          "name": "rock bass",
+          "species": "ambloplites rupestris"
+        },
+        {
+          "name": "walleye",
+          "species": "sander vitreus"
+        },
+        {
+          "name": "yellow bullhead",
+          "species": "ameiurus natalis"
+        },
+        {
+          "name": "yellow perch",
+          "species": "perca flavescens"
+        },
+        {
+          "name": "white sucker",
+          "species": ""
+        }
+      ],
+      "type": "other",
+      "newCountyId": "23031"
+    }
+  ],
+  "31132900": [
+    {
+      "localId": "31132902",
+      "name": "perry pit",
+      "countyId": 31,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23031"
+    }
+  ],
+  "34023500": [
+    {
+      "localId": "34023501",
+      "name": " (north portion)",
+      "countyId": 34,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23034"
+    },
+    {
+      "localId": "34023502",
+      "name": " (south portion)",
+      "countyId": 34,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23034"
+    }
+  ],
+  "34062610": [
+    {
+      "localId": "34062611",
+      "name": "new london hatchery pond 11",
+      "countyId": 34,
+      "nearestTown": "new london",
+      "coordinates": {
+        "longitude": -94.962339,
+        "latitude": 45.302171
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23034"
+    }
+  ],
+  "38072100": [
+    {
+      "localId": "38072101",
+      "name": "north lark",
+      "countyId": 38,
+      "nearestTown": "ely",
+      "coordinates": {
+        "longitude": -91.57082,
+        "latitude": 47.932238
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23038"
+    }
+  ],
+  "43011000": [
+    {
+      "localId": "43011002",
+      "name": "ferrell (east portion)",
+      "countyId": 43,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23043"
+    }
+  ],
+  "46002800": [
+    {
+      "localId": "46002802",
+      "name": " (east portion)",
+      "countyId": 46,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23046"
+    },
+    {
+      "localId": "46002801",
+      "name": " (west portion)",
+      "countyId": 46,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23046"
+    }
+  ],
+  "62002000": [
+    {
+      "localId": "62002001",
+      "name": "mallard pond (north)",
+      "countyId": 62,
+      "nearestTown": "north oaks",
+      "coordinates": {
+        "longitude": -93.067055,
+        "latitude": 45.09283
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    },
+    {
+      "localId": "62002002",
+      "name": "mallard pond (south)",
+      "countyId": 62,
+      "nearestTown": "north oaks",
+      "coordinates": {
+        "longitude": -93.068713,
+        "latitude": 45.089158
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    }
+  ],
+  "62002600": [
+    {
+      "localId": "62002602",
+      "name": "teal pond (middle)",
+      "countyId": 62,
+      "nearestTown": "north oaks",
+      "coordinates": {
+        "longitude": -93.071803,
+        "latitude": 45.08894
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    },
+    {
+      "localId": "62002601",
+      "name": "teal pond (north)",
+      "countyId": 62,
+      "nearestTown": "north oaks",
+      "coordinates": {
+        "longitude": -93.071216,
+        "latitude": 45.090313
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    },
+    {
+      "localId": "62002603",
+      "name": "teal pond (south)",
+      "countyId": 62,
+      "nearestTown": "north oaks",
+      "coordinates": {
+        "longitude": -93.073412,
+        "latitude": 45.087778
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    }
+  ],
+  "62009300": [
+    {
+      "localId": "62009301",
+      "name": " (east)",
+      "countyId": 62,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    },
+    {
+      "localId": "62009302",
+      "name": " (west)",
+      "countyId": 62,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    }
+  ],
+  "62009800": [
+    {
+      "localId": "62009801",
+      "name": " (north portion)",
+      "countyId": 62,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    }
+  ],
+  "62027600": [
+    {
+      "localId": "62027602",
+      "name": "edward",
+      "countyId": 62,
+      "nearestTown": "maplewood",
+      "coordinates": {
+        "longitude": -93.000809,
+        "latitude": 44.945388
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23062"
+    }
+  ],
+  "66014200": [
+    {
+      "localId": "66014201",
+      "name": "",
+      "countyId": 66,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23066"
+    }
+  ],
+  "69142900": [
+    {
+      "localId": "69142903",
+      "name": "douglas pit",
+      "countyId": 69,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23069"
+    },
+    {
+      "localId": "69142904",
+      "name": "monroe pit",
+      "countyId": 69,
+      "nearestTown": "dunwoody junction",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23069"
+    }
+  ],
+  "69143900": [
+    {
+      "localId": "69143901",
+      "name": "pit 5n east",
+      "countyId": 69,
+      "nearestTown": "ridge",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23069"
+    },
+    {
+      "localId": "69143902",
+      "name": "pit 5n west",
+      "countyId": 69,
+      "nearestTown": "ridge",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23069"
+    }
+  ],
+  "70025900": [
+    {
+      "localId": "70025901",
+      "name": "north twin",
+      "countyId": 70,
+      "nearestTown": "glendale (scott)",
+      "coordinates": {
+        "longitude": -93.371246,
+        "latitude": 44.748252
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23070"
+    },
+    {
+      "localId": "70025902",
+      "name": "south twin",
+      "countyId": 70,
+      "nearestTown": "glendale (scott)",
+      "coordinates": {
+        "longitude": -93.370749,
+        "latitude": 44.745402
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23070"
+    }
+  ],
+  "70032200": [
+    {
+      "localId": "70032202",
+      "name": " (east portion)",
+      "countyId": 70,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23070"
+    },
+    {
+      "localId": "70032201",
+      "name": " (west portion)",
+      "countyId": 70,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23070"
+    }
+  ],
+  "80002700": [
+    {
+      "localId": "80002702",
+      "name": "jim cook (east)",
+      "countyId": 80,
+      "nearestTown": "menahga",
+      "coordinates": {
+        "longitude": -95.008482,
+        "latitude": 46.748928
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23080"
+    },
+    {
+      "localId": "80002701",
+      "name": "jim cook (west)",
+      "countyId": 80,
+      "nearestTown": "menahga",
+      "coordinates": {
+        "longitude": -95.022296,
+        "latitude": 46.743943
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23080"
+    }
+  ],
+  "82011600": [
+    {
+      "localId": "82011601",
+      "name": "armstrong-north portion",
+      "countyId": 82,
+      "nearestTown": "lake elmo",
+      "coordinates": {
+        "longitude": -92.938788,
+        "latitude": 44.964954
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23082"
+    },
+    {
+      "localId": "82011602",
+      "name": "armstrong-south portion",
+      "countyId": 82,
+      "nearestTown": "oakdale",
+      "coordinates": {
+        "longitude": -92.938005,
+        "latitude": 44.962109
+      },
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23082"
+    }
+  ],
+  "86048800": [
+    {
+      "localId": "86048801",
+      "name": "(ne portion)",
+      "countyId": 86,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23086"
+    },
+    {
+      "localId": "86048802",
+      "name": "(se portion)",
+      "countyId": 86,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23086"
+    }
+  ],
+  "03037400": [
+    {
+      "localId": "03037401",
+      "name": "johnson",
+      "countyId": 3,
+      "nearestTown": "shoreham",
+      "coordinates": {
+        "longitude": -95.839172,
+        "latitude": 46.735311
+      },
+      "fishSpecies": [
+        {
+          "name": "black bullhead",
+          "species": "ameiurus melas"
+        },
+        {
+          "name": "black crappie",
+          "species": "pomoxis nigromaculatus"
+        },
+        {
+          "name": "bluegill",
+          "species": "lepomis macrochirus"
+        },
+        {
+          "name": "brown bullhead",
+          "species": "ameiurus nebulosus"
+        },
+        {
+          "name": "green sunfish",
+          "species": "lepomis cyanellus"
+        },
+        {
+          "name": "hybrid sunfish",
+          "species": ""
+        },
+        {
+          "name": "largemouth bass",
+          "species": "micropterus salmoides"
+        },
+        {
+          "name": "northern pike",
+          "species": "esox lucius"
+        },
+        {
+          "name": "pumpkinseed",
+          "species": "lepomis gibbosus"
+        },
+        {
+          "name": "walleye",
+          "species": "sander vitreus"
+        },
+        {
+          "name": "yellow bullhead",
+          "species": "ameiurus natalis"
+        },
+        {
+          "name": "yellow perch",
+          "species": "perca flavescens"
+        },
+        {
+          "name": "bowfin",
+          "species": "amia calva"
+        },
+        {
+          "name": "white sucker",
+          "species": ""
+        }
+      ],
+      "type": "other",
+      "newCountyId": "23003"
+    },
+    {
+      "localId": "03037402",
+      "name": "reeves",
+      "countyId": 3,
+      "nearestTown": "shoreham",
+      "coordinates": {
+        "longitude": -95.841839,
+        "latitude": 46.742635
+      },
+      "fishSpecies": [
+        {
+          "name": "black bullhead",
+          "species": "ameiurus melas"
+        },
+        {
+          "name": "black crappie",
+          "species": "pomoxis nigromaculatus"
+        },
+        {
+          "name": "bluegill",
+          "species": "lepomis macrochirus"
+        },
+        {
+          "name": "brown bullhead",
+          "species": "ameiurus nebulosus"
+        },
+        {
+          "name": "hybrid sunfish",
+          "species": ""
+        },
+        {
+          "name": "largemouth bass",
+          "species": "micropterus salmoides"
+        },
+        {
+          "name": "northern pike",
+          "species": "esox lucius"
+        },
+        {
+          "name": "pumpkinseed",
+          "species": "lepomis gibbosus"
+        },
+        {
+          "name": "yellow bullhead",
+          "species": "ameiurus natalis"
+        },
+        {
+          "name": "yellow perch",
+          "species": "perca flavescens"
+        },
+        {
+          "name": "bowfin",
+          "species": "amia calva"
+        },
+        {
+          "name": "white sucker",
+          "species": ""
+        }
+      ],
+      "type": "other",
+      "newCountyId": "23003"
+    }
+  ],
+  "04044500": [
+    {
+      "localId": "04044501",
+      "name": " (north portion)",
+      "countyId": 4,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23004"
+    },
+    {
+      "localId": "04044502",
+      "name": " (south portion)",
+      "countyId": 4,
+      "nearestTown": "",
+      "coordinates": null,
+      "fishSpecies": [],
+      "type": "other",
+      "newCountyId": "23004"
+    }
+  ]
+}

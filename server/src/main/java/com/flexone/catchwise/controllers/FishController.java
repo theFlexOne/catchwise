@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/fish")
+@RequestMapping("/fish")
 @RequiredArgsConstructor
 public class FishController {
 

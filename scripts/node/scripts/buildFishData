@@ -1,0 +1,21 @@
+export default function buildNewFishData(data) {
+  return {
+    name: data.name || "",
+    family: data.family || "",
+    species: data.species || "",
+    description: data.description || "",
+    identification: data.identification || "",
+    commonNames: [...data.commonNames],
+  };
+}
+
+/*
+  {
+    "name": "alligator gar",
+    "family": "lepisosteidae",
+    "species": "atractosteus spatula",
+    "description": "The Alligator Gar can grow to over 300 lb, and it is called Alligator gar because it has a head that looks very much like an alligator’s.",
+    "identification": "The Alligator Gar is certainly one of the most distinctive freshwater species of fish. It can be distinguished from all other gars by the two rows of teeth in the upper jaw, its broader snout, and its size when fully grown. All other gars have one row of teeth in the upper jaw. In most other respects all gars are very similar in appearance, with a long body, a long, toothy snout, and a single dorsal fin that is far back on the body above the anal fin and just before the tail.\nThe tail is  rounded and pectoral, ventral, and anal fins are fairly evenly spaced on the lower half of the body. The gars most closely resemble the fishes of the pike family (muskellunge, northern pike, and the pickerels.) in body shape and fin placement. In the pike family, the tail is forked not rounded.\n",
+    "commonNames": ["alligator gar"]
+  },
+*/

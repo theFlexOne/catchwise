@@ -80,17 +80,21 @@ export default function Map({ center, zoom = 14 }: MapProps) {
   async function handleSubmit(input: string) {
     input = input.trim() + " lake";
 
-    const fields = [FieldValues.name, FieldValues.place_id];
+    const fields = [
+      FieldValues.name,
+      FieldValues.place_id,
+      FieldValues.geometry,
+    ];
 
     const placeSearch = await searchForPlace(input, fields);
-    const placeId = placeSearch?.candidates[0]?.place_id || null;
+    const coords = placeSearch?.candidates[0]?.geometry
+      .location as LatLngLiteral;
 
-    if (placeId) {
-      const details = await getPlaceDetails(placeId, fields);
-      console.log(details);
-      const newCenter = details?.result.geometry.location as LatLngLiteral;
-      mapObject?.setCenter(newCenter);
-    }
+    console.log(placeSearch);
+    console.log(coords);
+
+    if (!coords) return;
+    mapObject?.setCenter(coords);
   }
 
   if (loadError) return <div>Error loading map. Try refreshing the page?</div>;

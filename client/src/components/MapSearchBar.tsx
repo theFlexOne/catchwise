@@ -82,7 +82,7 @@ function LakeNamesList({
         .map((lake) => (
           <option
             key={lake.id}
-            value={capitalize(lake.name)}
+            value={capitalize(lake.name ?? "")}
             className="capitalize"
           />
         ))}

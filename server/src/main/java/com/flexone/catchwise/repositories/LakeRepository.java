@@ -12,7 +12,6 @@ import java.util.List;
 
 public interface LakeRepository extends JpaRepository<Lake, Long> {
 
-
     @Override
     @NonNull
     List<Lake> findAll();
@@ -22,6 +21,6 @@ public interface LakeRepository extends JpaRepository<Lake, Long> {
     @Query("SELECT l FROM Lake l WHERE l.coordinates.latitude >= :minLat AND l.coordinates.latitude <= :maxLat AND l.coordinates.longitude >= :minLng AND l.coordinates.longitude <= :maxLng AND SUBSTRING(l.localId, LENGTH(l.localId) - 1, 1) = '0'")
     List<Lake> findAllInRange(double minLat, double maxLat, double minLng, double maxLng);
 
-    @Query("SELECT l FROM Lake l JOIN FETCH l.fish WHERE SIZE(l.fish) > 0 AND SUBSTRING(l.localId, LENGTH(l.localId) - 1, 1) = '0'")
-    List<Lake> findAllWithFish();
+
+    Lake findByLocalId(String parentLakeId);
 }
