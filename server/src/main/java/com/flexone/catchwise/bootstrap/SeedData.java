@@ -21,14 +21,14 @@ import java.util.stream.Collectors;
 public class SeedData implements CommandLineRunner {
 
     private final FishRepository fishRepository;
-    private final LakeRepository lakeRepository;
+    private final LakeBaseRepository lakeBaseRepository;
     private final CountyRepository countyRepository;
-    private final LakePartRepository lakePartRepository;
     private final StateRepository stateRepository;
 
     @Override
     public void run(String... args) {
-        seed();
+
+//        seed();
     }
 
     public void seed() {
@@ -59,18 +59,12 @@ public class SeedData implements CommandLineRunner {
         HashMap<String, List<LakeJSON>> lakes = new HashMap<>();
 
         for (LakeJSON lakeJSON : lakesJson) {
-            String type = lakeJSON.getType();
-            List<LakeJSON> typeLakesJSONList = lakes.getOrDefault(type, new ArrayList<>());
-            typeLakesJSONList.add(lakeJSON);
-            lakes.put(type, typeLakesJSONList);
         }
 
         List<Lake> lakeList = new ArrayList<>(lakes.get("lake").stream().map(this::mapLakeJSONToLake).toList());
         lakeList.addAll(lakes.get("other").stream().map(this::mapLakeJSONToLake).toList());
-        lakeRepository.saveAll(lakeList);
+        lakeBaseRepository.saveAll(lakeList);
 
-        List<LakePart> lakePartList = lakes.get("lake_part").stream().map(this::mapLakePartJSONToLakePart).toList();
-        lakePartRepository.saveAll(lakePartList);
     }
 
     private Lake mapLakeJSONToLake(LakeJSON lakeJSON) {
@@ -86,34 +80,14 @@ public class SeedData implements CommandLineRunner {
         String name = lakeJSON.getName();
         if (name.equals("unnamed")) name = null;
 
-        return new Lake()
-                .setName(name)
+        return (Lake) new Lake()
                 .setLocalId(lakeJSON.getLocalId())
-                .setCounty(county)
-                .setNearestTown(lakeJSON.getNearestTown())
+                .setName(name)
                 .setCoordinates(coordinates)
+                .setCounty(county)
                 .setFish(fishSet);
     }
 
-    private LakePart mapLakePartJSONToLakePart(LakeJSON lakeJSON) {
-        String localId = lakeJSON.getLocalId();
-        localId = localId.substring(0, localId.length() - 1) + "0";
-        Lake parentLake = lakeRepository.findByLocalId(localId);
-        List<String> speciesList = Arrays.stream(lakeJSON.getFishSpecies()).map(LakeJSON.FishSpecies::getSpecies).filter(species -> species.length() > 0).collect(Collectors.toList());
-        List<Fish> fish = fishRepository.findAllBySpeciesIn(speciesList);
-        Set<Fish> fishSet = new HashSet<>(fish);
-
-
-        String description = lakeJSON.getName().replace(parentLake.getName(), "").replaceAll("[()]", "").trim();
-
-        return new LakePart()
-                .setLakeName(parentLake.getName())
-                .setDescription(description)
-                .setLocalId(lakeJSON.getLocalId())
-                .setCoordinates(lakeJSON.getCoordinates())
-                .setFish(fishSet)
-                .setLake(parentLake);
-    }
 
 
 }

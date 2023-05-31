@@ -5,7 +5,7 @@ import com.flexone.catchwise.domain.Lake;
 import com.flexone.catchwise.dto.FishResponse;
 import com.flexone.catchwise.dto.LakeNameResponse;
 import com.flexone.catchwise.dto.LakeResponse;
-import com.flexone.catchwise.services.LakeService;
+import com.flexone.catchwise.services.LakeBaseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import java.util.List;
 @Slf4j
 public class LakeController {
 
-    final LakeService lakeService;
+    final LakeBaseService lakeBaseService;
 
     private static LakeResponse mapLakeToLakeResponse(Lake lake) {
         return LakeResponse.builder()
@@ -47,7 +47,7 @@ public class LakeController {
 
     @GetMapping
     public List<LakeResponse> getAllLakes() {
-        List<Lake> lakes = lakeService.findAll();
+        List<Lake> lakes = lakeBaseService.findAll();
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }
 
@@ -58,7 +58,7 @@ public class LakeController {
             @RequestParam double minLng,
             @RequestParam double maxLng
     ) {
-        List<Lake> lakes = lakeService.findAllInRange(minLat, maxLat, minLng, maxLng);
+        List<Lake> lakes = lakeBaseService.findAllInRange(minLat, maxLat, minLng, maxLng);
         log.info(minLat + " " + maxLat + " " + minLng + " " + maxLng);
         log.info("Found {} lakes in range", lakes.size());
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
@@ -66,19 +66,19 @@ public class LakeController {
 
     @GetMapping("/names")
     public List<LakeNameResponse> getAllLakeNames() {
-        List<Lake> lakes = lakeService.findAll();
+        List<Lake> lakes = lakeBaseService.findAll();
         return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
     }
 
     @GetMapping("/{id}")
     public LakeResponse getLakeById(@PathVariable Long id) {
-        Lake lake = lakeService.findById(id);
+        Lake lake = lakeBaseService.findById(id);
         return mapLakeToLakeResponse(lake);
     }
 
     @GetMapping("/{id}/fish")
     public List<FishResponse> getLakeFishById(@PathVariable Long id) {
-        Lake lake = lakeService.findById(id);
+        Lake lake = lakeBaseService.findById(id);
         return lake.getFish().stream().map(LakeController::mapFishToFishResponse).toList();
     }
 }
