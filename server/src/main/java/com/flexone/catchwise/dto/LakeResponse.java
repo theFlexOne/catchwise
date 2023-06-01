@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Accessors(chain = true)
 public class LakeResponse {
 
     private Long id;
@@ -24,7 +26,8 @@ public class LakeResponse {
     private String nearestTown;
     private Coordinates coordinates;
 
-    private String fishUrl;
+    private String fishesUrl;
+    private String lakePartsUrl;
 
 
 }

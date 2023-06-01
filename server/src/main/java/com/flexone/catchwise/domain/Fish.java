@@ -1,11 +1,15 @@
 package com.flexone.catchwise.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -35,6 +39,10 @@ public class Fish {
     @ElementCollection
     @CollectionTable(name = "common_fish_names", joinColumns = @JoinColumn(name = "fish_id"))
     private String[] commonNames;
+
+    @ManyToMany(mappedBy = "fishes", fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Lake> lakes = new HashSet<>();
 
 
 }

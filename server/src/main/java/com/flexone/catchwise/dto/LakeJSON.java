@@ -20,8 +20,8 @@ public class LakeJSON {
     private Long countyId;
     private String nearestTown;
     private Coordinates coordinates;
-    private FishSpecies[] fishSpecies;
-    private String type;
+    private FishSpecies[] fish;
+    private LakeJSON[] components;
 
     @Data
     public static class FishSpecies {

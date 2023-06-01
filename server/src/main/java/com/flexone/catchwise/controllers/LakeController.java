@@ -2,6 +2,7 @@ package com.flexone.catchwise.controllers;
 
 import com.flexone.catchwise.domain.Fish;
 import com.flexone.catchwise.domain.Lake;
+import com.flexone.catchwise.domain.LakeBase;
 import com.flexone.catchwise.dto.FishResponse;
 import com.flexone.catchwise.dto.LakeNameResponse;
 import com.flexone.catchwise.dto.LakeResponse;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 @RestController
 @RequestMapping("/lakes")
@@ -20,35 +22,29 @@ public class LakeController {
 
     final LakeService lakeService;
 
-    private static LakeResponse mapLakeToLakeResponse(Lake lake) {
-        return LakeResponse.builder()
-                .id(lake.getId())
-                .name(lake.getName())
-                .localId(lake.getLocalId())
-                .county(lake.getCounty().getName())
-                .state(lake.getCounty().getState().getName())
-                .nearestTown(lake.getNearestTown())
-                .coordinates(lake.getCoordinates())
-                .fishUrl(lake.buildLakeFishUrl())
-                .build();
+    private static Predicate<? super LakeBase> isRelevantLake() {
+        return l -> l.getFishes().size() > 0 && l.getCoordinates() != null && l.getName() != null;
     }
 
-    private static FishResponse mapFishToFishResponse(Fish f) {
-        return FishResponse.builder()
-                .id(f.getId())
-                .name(f.getName())
-                .family(f.getFamily())
-                .species(f.getSpecies())
-                .description(f.getDescription())
-                .identification(f.getIdentification())
-                .commonNames(f.getCommonNames())
-                .build();
-    }
 
     @GetMapping
     public List<LakeResponse> getAllLakes() {
-        List<Lake> lakes = lakeService.findAll();
+        List<LakeBase> lakes = lakeService.findAll();
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+    }
+
+    private static LakeResponse mapLakeToLakeResponse(LakeBase lakeBase) {
+        return new LakeResponse()
+                .setId(lakeBase.getId())
+                .setName(lakeBase.getName())
+                .setLocalId(lakeBase.getLocalId())
+                .setCounty(lakeBase.getCounty().getName())
+                .setState(lakeBase.getCounty().getState().getName())
+                .setNearestTown(lakeBase.getNearestTown())
+                .setCoordinates(lakeBase.getCoordinates())
+                .setFishesUrl(lakeBase.buildLakeFishUrl())
+                .setLakePartsUrl(lakeBase.buildLakePartsUrl()
+        );
     }
 
     @GetMapping("/in-range")
@@ -64,21 +60,21 @@ public class LakeController {
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }
 
-    @GetMapping("/names")
-    public List<LakeNameResponse> getAllLakeNames() {
-        List<Lake> lakes = lakeService.findAll();
-        return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
-    }
-
-    @GetMapping("/{id}")
-    public LakeResponse getLakeById(@PathVariable Long id) {
-        Lake lake = lakeService.findById(id);
-        return mapLakeToLakeResponse(lake);
-    }
-
-    @GetMapping("/{id}/fish")
-    public List<FishResponse> getLakeFishById(@PathVariable Long id) {
-        Lake lake = lakeService.findById(id);
-        return lake.getFish().stream().map(LakeController::mapFishToFishResponse).toList();
-    }
+//    @GetMapping("/names")
+//    public List<LakeNameResponse> getAllLakeNames() {
+//        List<Lake> lakes = lakeService.findAll();
+//        return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
+//    }
+//
+//    @GetMapping("/{id}")
+//    public LakeResponse getLakeById(@PathVariable Long id) {
+//        Lake lake = lakeService.findById(id);
+//        return mapLakeToLakeResponse(lake);
+//    }
+//
+//    @GetMapping("/{id}/fish")
+//    public List<FishResponse> getLakeFishById(@PathVariable Long id) {
+//        Lake lake = lakeService.findById(id);
+//        return lake.getFishes().stream().map(LakeController::mapFishToFishResponse).toList();
+//    }
 }
