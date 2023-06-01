@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
@@ -21,14 +22,21 @@ import java.util.stream.Collectors;
 public class SeedData implements CommandLineRunner {
 
     private final FishRepository fishRepository;
-    private final LakeBaseRepository lakeBaseRepository;
+    private final LakeRepository lakeRepository;
     private final CountyRepository countyRepository;
-    private final StateRepository stateRepository;
+
+    final Boolean shouldSeedData = true;
 
     @Override
     public void run(String... args) {
 
-//        seed();
+        if (shouldSeedData) {
+            seed();
+        } else {
+            log.info("Seeding OFF.");
+        }
+
+
     }
 
     public void seed() {
@@ -53,39 +61,75 @@ public class SeedData implements CommandLineRunner {
 
     private void importLakeDataJSON() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/resources/data/lakeData.json");
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, LakeJSON.class);
+        File file = new File("src/main/resources/data/lakeData_min.json");
         List<LakeJSON> lakesJson = objectMapper.readValue(file, collectionType);
-        HashMap<String, List<LakeJSON>> lakes = new HashMap<>();
+        HashSet<Lake> lakes = new HashSet<>();
+        HashSet<String> notFoundFishSpecies = new HashSet<>();
+
 
         for (LakeJSON lakeJSON : lakesJson) {
+            Object[] data = mapLakeJSONToLake(lakeJSON);
+            lakes.add((Lake) data[0]);
+            notFoundFishSpecies.addAll((HashSet<String>) data[1]);
         }
 
-        List<Lake> lakeList = new ArrayList<>(lakes.get("lake").stream().map(this::mapLakeJSONToLake).toList());
-        lakeList.addAll(lakes.get("other").stream().map(this::mapLakeJSONToLake).toList());
-        lakeBaseRepository.saveAll(lakeList);
+        // print out fish species that were not found in the database
+        log.info("Couldn't find the following fish species:");
+        for (String species : notFoundFishSpecies) {
+            log.info("    --->  " + species);
+        }
+
+
+
+
+        lakeRepository.saveAll(lakes);
 
     }
 
-    private Lake mapLakeJSONToLake(LakeJSON lakeJSON) {
-        List<String> speciesList = Arrays.stream(lakeJSON.getFishSpecies()).map(LakeJSON.FishSpecies::getSpecies).filter(species -> species.length() > 0).collect(Collectors.toList());
-        List<Fish> fish = fishRepository.findAllBySpeciesIn(speciesList);
-        Set<Fish> fishSet = new HashSet<>(fish);
+    private Object[] mapLakeJSONToLake(LakeJSON lakeJSON) {
+        List<String> speciesList = Arrays.stream(lakeJSON.getFish()).map(LakeJSON.FishSpecies::getSpecies).collect(Collectors.toList());
+        HashSet<Fish> fishes = new HashSet<>(fishRepository.findAllBySpeciesIn(speciesList));
 
-        County county = countyRepository.findById(lakeJSON.getCountyId()).orElseThrow();
+        // merge 'speciesList' and 'fishes' into one HashSet
+        HashSet<String> notFoundFishSpecies = new HashSet<>();
+        for (String species : speciesList) {
+            if (fishes.stream().noneMatch(fish -> fish.getSpecies().equals(species))) {
+                Fish fish = new Fish().setSpecies(species);
+                fishes.add(fish);
+                notFoundFishSpecies.add(species);
+            }
+        }
 
-        Coordinates coordinates = lakeJSON.getCoordinates();
-        if (coordinates.getLatitude() == 0 && coordinates.getLongitude() == 0) coordinates = null;
 
-        String name = lakeJSON.getName();
-        if (name.equals("unnamed")) name = null;
-
-        return (Lake) new Lake()
+        Lake lake = new Lake()
+                .setName(lakeJSON.getName())
                 .setLocalId(lakeJSON.getLocalId())
-                .setName(name)
-                .setCoordinates(coordinates)
-                .setCounty(county)
-                .setFish(fishSet);
+                .setCounty(lakeJSON.getCountyId() == null ? null : countyRepository.findById(lakeJSON.getCountyId()).orElse(null))
+                .setNearestTown(lakeJSON.getNearestTown())
+                .setCoordinates(lakeJSON.getCoordinates())
+                .setFish(fishes);
+
+        for (LakeJSON.Component lakeComponent : lakeJSON.getComponents()) {
+            speciesList = Arrays.stream(lakeComponent.getFish()).map(LakeJSON.FishSpecies::getSpecies).collect(Collectors.toList());
+            HashSet<Fish> lcFishes = new HashSet<>(fishRepository.findAllBySpeciesIn(speciesList));
+            LakeComponent component = new LakeComponent()
+                    .setLocalId(lakeComponent.getLocalId())
+                    .setName(lakeComponent.getName())
+                    .setCoordinates(lakeComponent.getCoordinates())
+                    .setFish(lcFishes);
+            lake.getLakeComponents().add(component);
+        }
+
+//        Resource lakeResource = new Resource()
+//                .setLocalId(lakeJSON.getLocalId())
+//                .setDescription("MN DNR Lake Information")
+//                .setUrl("https://www.dnr.state.mn.us/lakefind/lake.html?id=" + lakeJSON.getLocalId());
+
+        return new Object[]{
+                lake,
+                notFoundFishSpecies
+        };
     }
 
 
