@@ -21,13 +21,14 @@ import java.util.stream.Collectors;
 public class SeedData implements CommandLineRunner {
 
     private final FishRepository fishRepository;
-    private final LakeBaseRepository lakeBaseRepository;
+    private final LakeRepository lakeRepository;
+    private final LakeComponentRepository lakeComponentRepository;
     private final CountyRepository countyRepository;
 
     @Override
     public void run(String... args) {
 
-        seed();
+//        seed();
     }
 
     public void seed() {
@@ -54,48 +55,51 @@ public class SeedData implements CommandLineRunner {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/resources/data/lakeData.json");
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, LakeJSON.class);
-        List<LakeJSON> lakesJson = objectMapper.readValue(file, collectionType);
-
-        List<Lake> lakes = lakesJson.stream()
-                .map(this::mapLakeJSONToLake)
-                .toList();
-
-
-
-
-        lakeBaseRepository.saveAll(lakes);
-
+        List<LakeJSON> lakes = objectMapper.readValue(file, collectionType);
+        List<Lake> lakeList = lakes.stream().map(this::mapLakeJSONToLake).toList();
+        lakeRepository.saveAll(lakeList);
     }
 
     private Lake mapLakeJSONToLake(LakeJSON lakeJSON) {
 
-        County county = countyRepository.findById(lakeJSON.getCountyId()).orElse(null);
-        Coordinates coordinates = lakeJSON.getCoordinates();
-        HashSet<Fish> fishSet = Arrays.stream(lakeJSON.getFish())
-                .map(fishJSON -> fishRepository.findBySpecies(fishJSON.getSpecies()))
+        County lakeCounty = countyRepository.findById(lakeJSON.getCountyId()).orElseThrow();
+
+        HashSet<Fish> lakeFishes = lakeJSON.getFishes().stream()
+                .map(this::findOrCreateFish)
                 .collect(Collectors.toCollection(HashSet::new));
 
-        Set<LakePart> lakeParts = Arrays.stream(lakeJSON.getComponents())
-                .map(this::mapLakeJSONToLakePart)
-                .collect(Collectors.toSet());
+        List<LakeComponent> lakeComponents = lakeJSON.getComponents().stream()
+                .map(lc -> {
+                    HashSet<Fish> componentFishes = lc.getFishes().stream()
+                            .map(this::findOrCreateFish)
+                            .collect(Collectors.toCollection(HashSet::new));
+
+                    return new LakeComponent()
+                            .setName(lc.getName())
+                            .setLocalId(lc.getLocalId())
+                            .setCoordinates(lc.getCoordinates())
+                            .setFishes(componentFishes);
+                }).collect(Collectors.toList());
 
 
-        Lake lake = (Lake) new Lake()
-                .setLocalId(lakeJSON.getLocalId())
+        return new Lake()
                 .setName(lakeJSON.getName())
-                .setCoordinates(coordinates)
-                .setCounty(county)
-                .setFishes(fishSet);
-
-        lake.setLakeParts(lakeJSON.getComponents().length > 0 ? lakeParts : null);
-        return lake;
+                .setLocalId(lakeJSON.getLocalId())
+                .setNearestTown(lakeJSON.getNearestTown())
+                .setCoordinates(lakeJSON.getCoordinates())
+                .setCounty(lakeCounty)
+                .setFishes(lakeFishes)
+                .setComponents(lakeComponents);
     }
 
-    private LakePart mapLakeJSONToLakePart(LakeJSON lakeJSON) {
-        return (LakePart) new LakePart()
-                .setLocalId(lakeJSON.getLocalId())
-                .setName(lakeJSON.getName())
-                .setCoordinates(lakeJSON.getCoordinates());
-    }
 
+    private Fish findOrCreateFish(LakeJSON.FishSpecies fish) {
+        Fish newFish = fishRepository.findBySpecies(fish.getSpecies()).orElse(null);
+        if (newFish == null) {
+            newFish = new Fish()
+                    .setName(fish.getName())
+                    .setSpecies(fish.getSpecies());
+        }
+        return fishRepository.save(newFish);
+    }
 }

@@ -1,5 +1,673 @@
 [
   {
+    "localId": "01020900",
+    "name": "cedar",
+    "countyId": 1,
+    "nearestTown": "aitkin",
+    "coordinates": {
+      "longitude": -93.800175,
+      "latitude": 46.499521
+    },
+    "fish": [
+      {
+        "name": "black bullhead",
+        "species": "ameiurus melas"
+      },
+      {
+        "name": "black crappie",
+        "species": "pomoxis nigromaculatus"
+      },
+      {
+        "name": "bluegill",
+        "species": "lepomis macrochirus"
+      },
+      {
+        "name": "brown bullhead",
+        "species": "ameiurus nebulosus"
+      },
+      {
+        "name": "burbot",
+        "species": "lota lota"
+      },
+      {
+        "name": "green sunfish",
+        "species": "lepomis clepomisyanellus"
+      },
+      {
+        "name": "pumpkingill",
+        "species": "lepomis gibbosus x macrochirus"
+      },
+      {
+        "name": "largemouth bass",
+        "species": "micropterus salmoides"
+      },
+      {
+        "name": "muskellunge",
+        "species": "esox masquinongy"
+      },
+      {
+        "name": "northern pike",
+        "species": "esox lucius"
+      },
+      {
+        "name": "pumpkinseed",
+        "species": "lepomis gibbosus"
+      },
+      {
+        "name": "rock bass",
+        "species": "ambloplites rupestris"
+      },
+      {
+        "name": "sunfish",
+        "species": "lepomis"
+      },
+      {
+        "name": "cisco",
+        "species": "coregonus artedi"
+      },
+      {
+        "name": "walleye",
+        "species": "sander vitreus"
+      },
+      {
+        "name": "yellow bullhead",
+        "species": "ameiurus natalis"
+      },
+      {
+        "name": "yellow perch",
+        "species": "perca flavescens"
+      },
+      {
+        "name": "bigmouth buffalo",
+        "species": "ictiobus cyprinellus"
+      },
+      {
+        "name": "bowfin",
+        "species": "amia calva"
+      },
+      {
+        "name": "shorthead redhorse",
+        "species": "moxostoma macrolepidotum"
+      },
+      {
+        "name": "white sucker",
+        "species": "catostomus commersonii"
+      },
+      {
+        "name": "banded killifish",
+        "species": "fundulus diaphanus"
+      },
+      {
+        "name": "blackchin shiner",
+        "species": "notropis heterodon"
+      },
+      {
+        "name": "blacknose shiner",
+        "species": "notropis heterolepis"
+      },
+      {
+        "name": "bluntnose minnow",
+        "species": "pimephales notatus"
+      },
+      {
+        "name": "brook silverside",
+        "species": "labidesthes sicculus"
+      },
+      {
+        "name": "central mudminnow",
+        "species": "umbra limi"
+      },
+      {
+        "name": "common shiner",
+        "species": "luxilus cornutus"
+      },
+      {
+        "name": "creek chub",
+        "species": "semotilus atromaculatus"
+      },
+      {
+        "name": "emerald shiner",
+        "species": "notropis atherinoides"
+      },
+      {
+        "name": "fathead minnow",
+        "species": "pimephales promelas"
+      },
+      {
+        "name": "golden shiner",
+        "species": "notemigonus crysoleucas"
+      },
+      {
+        "name": "iowa darter",
+        "species": "etheostoma exile"
+      },
+      {
+        "name": "johnny darter",
+        "species": "etheostoma nigrum"
+      },
+      {
+        "name": "least darter",
+        "species": "etheostoma microperca"
+      },
+      {
+        "name": "mottled sculpin",
+        "species": "cottus bairdii"
+      },
+      {
+        "name": "pugnose shiner",
+        "species": "notropis anogenus"
+      },
+      {
+        "name": "spottail shiner",
+        "species": "notropis hudsonius"
+      },
+      {
+        "name": "tadpole madtom",
+        "species": "noturus gyrinus"
+      }
+    ],
+    "components": [
+      {
+        "localId": "01020901",
+        "name": "cedar(main basin)",
+        "coordinates": {
+          "longitude": -93.792001,
+          "latitude": 46.49958
+        },
+        "fish": [
+          {
+            "name": "black bullhead",
+            "species": "ameiurus melas"
+          },
+          {
+            "name": "black crappie",
+            "species": "pomoxis nigromaculatus"
+          },
+          {
+            "name": "bluegill",
+            "species": "lepomis macrochirus"
+          },
+          {
+            "name": "brown bullhead",
+            "species": "ameiurus nebulosus"
+          },
+          {
+            "name": "burbot",
+            "species": "lota lota"
+          },
+          {
+            "name": "green sunfish",
+            "species": "lepomis clepomisyanellus"
+          },
+          {
+            "name": "pumpkingill",
+            "species": "lepomis gibbosus x macrochirus"
+          },
+          {
+            "name": "largemouth bass",
+            "species": "micropterus salmoides"
+          },
+          {
+            "name": "muskellunge",
+            "species": "esox masquinongy"
+          },
+          {
+            "name": "northern pike",
+            "species": "esox lucius"
+          },
+          {
+            "name": "pumpkinseed",
+            "species": "lepomis gibbosus"
+          },
+          {
+            "name": "rock bass",
+            "species": "ambloplites rupestris"
+          },
+          {
+            "name": "sunfish",
+            "species": "lepomis"
+          },
+          {
+            "name": "cisco",
+            "species": "coregonus artedi"
+          },
+          {
+            "name": "walleye",
+            "species": "sander vitreus"
+          },
+          {
+            "name": "yellow bullhead",
+            "species": "ameiurus natalis"
+          },
+          {
+            "name": "yellow perch",
+            "species": "perca flavescens"
+          },
+          {
+            "name": "bigmouth buffalo",
+            "species": "ictiobus cyprinellus"
+          },
+          {
+            "name": "bowfin",
+            "species": "amia calva"
+          },
+          {
+            "name": "shorthead redhorse",
+            "species": "moxostoma macrolepidotum"
+          },
+          {
+            "name": "white sucker",
+            "species": "catostomus commersonii"
+          },
+          {
+            "name": "banded killifish",
+            "species": "fundulus diaphanus"
+          },
+          {
+            "name": "blackchin shiner",
+            "species": "notropis heterodon"
+          },
+          {
+            "name": "blacknose shiner",
+            "species": "notropis heterolepis"
+          },
+          {
+            "name": "bluntnose minnow",
+            "species": "pimephales notatus"
+          },
+          {
+            "name": "brook silverside",
+            "species": "labidesthes sicculus"
+          },
+          {
+            "name": "central mudminnow",
+            "species": "umbra limi"
+          },
+          {
+            "name": "common shiner",
+            "species": "luxilus cornutus"
+          },
+          {
+            "name": "creek chub",
+            "species": "semotilus atromaculatus"
+          },
+          {
+            "name": "emerald shiner",
+            "species": "notropis atherinoides"
+          },
+          {
+            "name": "fathead minnow",
+            "species": "pimephales promelas"
+          },
+          {
+            "name": "golden shiner",
+            "species": "notemigonus crysoleucas"
+          },
+          {
+            "name": "iowa darter",
+            "species": "etheostoma exile"
+          },
+          {
+            "name": "johnny darter",
+            "species": "etheostoma nigrum"
+          },
+          {
+            "name": "least darter",
+            "species": "etheostoma microperca"
+          },
+          {
+            "name": "mottled sculpin",
+            "species": "cottus bairdii"
+          },
+          {
+            "name": "pugnose shiner",
+            "species": "notropis anogenus"
+          },
+          {
+            "name": "spottail shiner",
+            "species": "notropis hudsonius"
+          },
+          {
+            "name": "tadpole madtom",
+            "species": "noturus gyrinus"
+          }
+        ]
+      },
+      {
+        "localId": "01020902",
+        "name": "cedar(n.e. arm)",
+        "coordinates": {
+          "longitude": -93.773931,
+          "latitude": 46.516849
+        },
+        "fish": [
+          {
+            "name": "black bullhead",
+            "species": "ameiurus melas"
+          },
+          {
+            "name": "black crappie",
+            "species": "pomoxis nigromaculatus"
+          },
+          {
+            "name": "bluegill",
+            "species": "lepomis macrochirus"
+          },
+          {
+            "name": "brown bullhead",
+            "species": "ameiurus nebulosus"
+          },
+          {
+            "name": "burbot",
+            "species": "lota lota"
+          },
+          {
+            "name": "green sunfish",
+            "species": "lepomis clepomisyanellus"
+          },
+          {
+            "name": "pumpkingill",
+            "species": "lepomis gibbosus x macrochirus"
+          },
+          {
+            "name": "largemouth bass",
+            "species": "micropterus salmoides"
+          },
+          {
+            "name": "muskellunge",
+            "species": "esox masquinongy"
+          },
+          {
+            "name": "northern pike",
+            "species": "esox lucius"
+          },
+          {
+            "name": "pumpkinseed",
+            "species": "lepomis gibbosus"
+          },
+          {
+            "name": "rock bass",
+            "species": "ambloplites rupestris"
+          },
+          {
+            "name": "sunfish",
+            "species": "lepomis"
+          },
+          {
+            "name": "cisco",
+            "species": "coregonus artedi"
+          },
+          {
+            "name": "walleye",
+            "species": "sander vitreus"
+          },
+          {
+            "name": "yellow bullhead",
+            "species": "ameiurus natalis"
+          },
+          {
+            "name": "yellow perch",
+            "species": "perca flavescens"
+          },
+          {
+            "name": "bigmouth buffalo",
+            "species": "ictiobus cyprinellus"
+          },
+          {
+            "name": "bowfin",
+            "species": "amia calva"
+          },
+          {
+            "name": "shorthead redhorse",
+            "species": "moxostoma macrolepidotum"
+          },
+          {
+            "name": "white sucker",
+            "species": "catostomus commersonii"
+          },
+          {
+            "name": "banded killifish",
+            "species": "fundulus diaphanus"
+          },
+          {
+            "name": "blackchin shiner",
+            "species": "notropis heterodon"
+          },
+          {
+            "name": "blacknose shiner",
+            "species": "notropis heterolepis"
+          },
+          {
+            "name": "bluntnose minnow",
+            "species": "pimephales notatus"
+          },
+          {
+            "name": "brook silverside",
+            "species": "labidesthes sicculus"
+          },
+          {
+            "name": "central mudminnow",
+            "species": "umbra limi"
+          },
+          {
+            "name": "common shiner",
+            "species": "luxilus cornutus"
+          },
+          {
+            "name": "creek chub",
+            "species": "semotilus atromaculatus"
+          },
+          {
+            "name": "emerald shiner",
+            "species": "notropis atherinoides"
+          },
+          {
+            "name": "fathead minnow",
+            "species": "pimephales promelas"
+          },
+          {
+            "name": "golden shiner",
+            "species": "notemigonus crysoleucas"
+          },
+          {
+            "name": "iowa darter",
+            "species": "etheostoma exile"
+          },
+          {
+            "name": "johnny darter",
+            "species": "etheostoma nigrum"
+          },
+          {
+            "name": "least darter",
+            "species": "etheostoma microperca"
+          },
+          {
+            "name": "mottled sculpin",
+            "species": "cottus bairdii"
+          },
+          {
+            "name": "pugnose shiner",
+            "species": "notropis anogenus"
+          },
+          {
+            "name": "spottail shiner",
+            "species": "notropis hudsonius"
+          },
+          {
+            "name": "tadpole madtom",
+            "species": "noturus gyrinus"
+          }
+        ]
+      },
+      {
+        "localId": "01020903",
+        "name": "cedar(west bay)",
+        "coordinates": {
+          "longitude": -93.824325,
+          "latitude": 46.487237
+        },
+        "fish": [
+          {
+            "name": "black bullhead",
+            "species": "ameiurus melas"
+          },
+          {
+            "name": "black crappie",
+            "species": "pomoxis nigromaculatus"
+          },
+          {
+            "name": "bluegill",
+            "species": "lepomis macrochirus"
+          },
+          {
+            "name": "brown bullhead",
+            "species": "ameiurus nebulosus"
+          },
+          {
+            "name": "burbot",
+            "species": "lota lota"
+          },
+          {
+            "name": "green sunfish",
+            "species": "lepomis clepomisyanellus"
+          },
+          {
+            "name": "pumpkingill",
+            "species": "lepomis gibbosus x macrochirus"
+          },
+          {
+            "name": "largemouth bass",
+            "species": "micropterus salmoides"
+          },
+          {
+            "name": "muskellunge",
+            "species": "esox masquinongy"
+          },
+          {
+            "name": "northern pike",
+            "species": "esox lucius"
+          },
+          {
+            "name": "pumpkinseed",
+            "species": "lepomis gibbosus"
+          },
+          {
+            "name": "rock bass",
+            "species": "ambloplites rupestris"
+          },
+          {
+            "name": "sunfish",
+            "species": "lepomis"
+          },
+          {
+            "name": "cisco",
+            "species": "coregonus artedi"
+          },
+          {
+            "name": "walleye",
+            "species": "sander vitreus"
+          },
+          {
+            "name": "yellow bullhead",
+            "species": "ameiurus natalis"
+          },
+          {
+            "name": "yellow perch",
+            "species": "perca flavescens"
+          },
+          {
+            "name": "bigmouth buffalo",
+            "species": "ictiobus cyprinellus"
+          },
+          {
+            "name": "bowfin",
+            "species": "amia calva"
+          },
+          {
+            "name": "shorthead redhorse",
+            "species": "moxostoma macrolepidotum"
+          },
+          {
+            "name": "white sucker",
+            "species": "catostomus commersonii"
+          },
+          {
+            "name": "banded killifish",
+            "species": "fundulus diaphanus"
+          },
+          {
+            "name": "blackchin shiner",
+            "species": "notropis heterodon"
+          },
+          {
+            "name": "blacknose shiner",
+            "species": "notropis heterolepis"
+          },
+          {
+            "name": "bluntnose minnow",
+            "species": "pimephales notatus"
+          },
+          {
+            "name": "brook silverside",
+            "species": "labidesthes sicculus"
+          },
+          {
+            "name": "central mudminnow",
+            "species": "umbra limi"
+          },
+          {
+            "name": "common shiner",
+            "species": "luxilus cornutus"
+          },
+          {
+            "name": "creek chub",
+            "species": "semotilus atromaculatus"
+          },
+          {
+            "name": "emerald shiner",
+            "species": "notropis atherinoides"
+          },
+          {
+            "name": "fathead minnow",
+            "species": "pimephales promelas"
+          },
+          {
+            "name": "golden shiner",
+            "species": "notemigonus crysoleucas"
+          },
+          {
+            "name": "iowa darter",
+            "species": "etheostoma exile"
+          },
+          {
+            "name": "johnny darter",
+            "species": "etheostoma nigrum"
+          },
+          {
+            "name": "least darter",
+            "species": "etheostoma microperca"
+          },
+          {
+            "name": "mottled sculpin",
+            "species": "cottus bairdii"
+          },
+          {
+            "name": "pugnose shiner",
+            "species": "notropis anogenus"
+          },
+          {
+            "name": "spottail shiner",
+            "species": "notropis hudsonius"
+          },
+          {
+            "name": "tadpole madtom",
+            "species": "noturus gyrinus"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "localId": "01004000",
     "name": "aitkin",
     "countyId": 1,
@@ -101,7 +769,6 @@
         "name": "johnny darter",
         "species": "etheostoma nigrum"
       },
-
       {
         "name": "tadpole madtom",
         "species": "noturus gyrinoturus gyrinusnus"

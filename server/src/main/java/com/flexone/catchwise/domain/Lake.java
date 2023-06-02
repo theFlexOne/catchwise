@@ -6,27 +6,45 @@ import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Builder
 @Accessors(chain = true)
-@DiscriminatorValue("lake")
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class Lake extends LakeBase<Lake> {
+public class Lake {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @OneToMany(mappedBy = "lake", fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("lake")
-    private Set<LakePart> lakeParts = new HashSet<>();
+    private String name;
+    private String localId;
 
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "county_id", referencedColumnName = "id")
+    private County county;
 
-    public void setLakeParts(Set<LakePart> lakeParts) {
-        this.lakeParts = lakeParts;
+    private String nearestTown;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "coordinates_id", referencedColumnName = "id")
+    private Coordinates coordinates;
+
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "lake_fish",
+            joinColumns = @JoinColumn(name = "lake_id"),
+            inverseJoinColumns = @JoinColumn(name = "fish_id"))
+    private Set<Fish> fishes;
+
+    public String buildLakeFishUrl() {
+        return "/api/v1/lakes/" + this.id + "/fish";
     }
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<LakeComponent> components;
 
     public Double getLat() {
         return this.getCoordinates().getLatitude();

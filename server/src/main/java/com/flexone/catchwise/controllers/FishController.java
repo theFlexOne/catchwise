@@ -17,15 +17,13 @@ public class FishController {
     final FishService fishService;
 
     private static FishResponse mapFishToFishResponse(Fish f) {
-        return FishResponse.builder()
-                .id(f.getId())
-                .name(f.getName())
-                .family(f.getFamily())
-                .species(f.getSpecies())
-                .description(f.getDescription())
-                .identification(f.getIdentification())
-                .commonNames(f.getCommonNames())
-                .build();
+        return new FishResponse()
+                .setId(f.getId())
+                .setName(f.getName())
+                .setSpecies(f.getSpecies())
+                .setDescription(f.getDescription())
+                .setIdentification(f.getIdentification())
+                .setCommonNames(f.getCommonNames());
     }
 
 

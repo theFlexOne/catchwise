@@ -1,13 +1,12 @@
 package com.flexone.catchwise.repositories;
 
 import com.flexone.catchwise.domain.Lake;
-import com.flexone.catchwise.domain.LakeBase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface LakeBaseRepository extends JpaRepository<LakeBase, Long> {
+public interface LakeRepository extends JpaRepository<Lake, Long> {
 
 
     Lake findByLocalId(String localId);

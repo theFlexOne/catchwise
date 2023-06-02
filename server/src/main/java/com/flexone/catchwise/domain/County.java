@@ -6,9 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 @Entity
 @Data
+@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class County {
@@ -26,10 +28,5 @@ public class County {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "state_id", referencedColumnName = "id")
     private State state;
-
-    public County(String name, State state) {
-        this.name = name;
-        this.state = state;
-    }
 
 }

@@ -1,25 +1,26 @@
 package com.flexone.catchwise.services;
 
 import com.flexone.catchwise.domain.Lake;
-import com.flexone.catchwise.domain.LakePart;
+import com.flexone.catchwise.domain.LakeComponent;
+import com.flexone.catchwise.repositories.LakeRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
+@Service
+@RequiredArgsConstructor
+public class LakePartService {
 
-public interface LakePartService {
+    final LakeRepository lakeRepository;
 
+    public LakeComponent findById(Long id) {
+        return null;
+    }
 
-    // region SINGLES
-    LakePart findById(Long id);
-    LakePart findByLocalId(String localId);
-    Lake getParent(LakePart lakePart);
-    // endregion
+    public LakeComponent findByLocalId(String localId) {
+        return null;
+    }
 
-
-    // region LISTS
-
-
-
-    // endregion
-
-
+    public Lake getParent(LakeComponent lakeComponent) {
+        return null;
+    }
 }

@@ -2,7 +2,6 @@ package com.flexone.catchwise.controllers;
 
 import com.flexone.catchwise.domain.Fish;
 import com.flexone.catchwise.domain.Lake;
-import com.flexone.catchwise.domain.LakeBase;
 import com.flexone.catchwise.dto.FishResponse;
 import com.flexone.catchwise.dto.LakeNameResponse;
 import com.flexone.catchwise.dto.LakeResponse;
@@ -22,29 +21,31 @@ public class LakeController {
 
     final LakeService lakeService;
 
-    private static Predicate<? super LakeBase> isRelevantLake() {
+    private static Predicate<Lake> isRelevantLake() {
         return l -> l.getFishes().size() > 0 && l.getCoordinates() != null && l.getName() != null;
     }
 
 
     @GetMapping
     public List<LakeResponse> getAllLakes() {
-        List<LakeBase> lakes = lakeService.findAll();
-        return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+        List<Lake> lakes = lakeService.findAll();
+        log.info("Found {} lakes", lakes.size());
+        return lakes.stream()
+                .filter(isRelevantLake())
+                .map(LakeController::mapLakeToLakeResponse)
+                .toList();
     }
 
-    private static LakeResponse mapLakeToLakeResponse(LakeBase lakeBase) {
+    private static LakeResponse mapLakeToLakeResponse(Lake l) {
         return new LakeResponse()
-                .setId(lakeBase.getId())
-                .setName(lakeBase.getName())
-                .setLocalId(lakeBase.getLocalId())
-                .setCounty(lakeBase.getCounty().getName())
-                .setState(lakeBase.getCounty().getState().getName())
-                .setNearestTown(lakeBase.getNearestTown())
-                .setCoordinates(lakeBase.getCoordinates())
-                .setFishesUrl(lakeBase.buildLakeFishUrl())
-                .setLakePartsUrl(lakeBase.buildLakePartsUrl()
-        );
+                .setId(l.getId())
+                .setName(l.getName())
+                .setLocalId(l.getLocalId())
+                .setCounty(l.getCounty().getName())
+                .setState(l.getCounty().getState().getName())
+                .setNearestTown(l.getNearestTown())
+                .setCoordinates(l.getCoordinates())
+                .setFishesUrl(l.buildLakeFishUrl());
     }
 
     @GetMapping("/in-range")
@@ -60,21 +61,32 @@ public class LakeController {
         return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
     }
 
-//    @GetMapping("/names")
-//    public List<LakeNameResponse> getAllLakeNames() {
-//        List<Lake> lakes = lakeService.findAll();
-//        return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
-//    }
-//
-//    @GetMapping("/{id}")
-//    public LakeResponse getLakeById(@PathVariable Long id) {
-//        Lake lake = lakeService.findById(id);
-//        return mapLakeToLakeResponse(lake);
-//    }
-//
-//    @GetMapping("/{id}/fish")
-//    public List<FishResponse> getLakeFishById(@PathVariable Long id) {
-//        Lake lake = lakeService.findById(id);
-//        return lake.getFishes().stream().map(LakeController::mapFishToFishResponse).toList();
-//    }
+    @GetMapping("/names")
+    public List<LakeNameResponse> getAllLakeNames() {
+        List<Lake> lakes = lakeService.findAll();
+        log.info("Found {} lakes", lakes.size());
+        return lakes.stream().map(l -> new LakeNameResponse(l.getId(), l.getName())).toList();
+    }
+
+    @GetMapping("/{id}")
+    public LakeResponse getLakeById(@PathVariable Long id) {
+        Lake lake = lakeService.findById(id);
+        return mapLakeToLakeResponse(lake);
+    }
+
+    @GetMapping("/{id}/fish")
+    public List<FishResponse> getLakeFishById(@PathVariable Long id) {
+        Lake lake = lakeService.findById(id);
+        return lake.getFishes().stream().map(LakeController::mapFishToFishResponse).toList();
+    }
+
+    private static FishResponse mapFishToFishResponse(Fish fish) {
+        return new FishResponse()
+                .setId(fish.getId())
+                .setName(fish.getName())
+                .setSpecies(fish.getSpecies())
+                .setDescription(fish.getDescription())
+                .setIdentification(fish.getIdentification())
+                .setCommonNames(fish.getCommonNames());
+    }
 }
