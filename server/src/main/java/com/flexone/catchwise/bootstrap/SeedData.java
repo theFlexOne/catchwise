@@ -28,14 +28,18 @@ public class SeedData implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-//        seed();
+        seed();
     }
 
     public void seed() {
         System.out.println("Seeding data...");
         try {
+            log.info("Seeding Fish data...");
             importFishDataJSON();
+            log.info("Seeding Fish data complete.");
+            log.info("Seeding Lake data...");
             importLakeDataJSON();
+            log.info("Seeding Lake data complete.");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -46,17 +50,24 @@ public class SeedData implements CommandLineRunner {
 
     private void importFishDataJSON() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        log.info("Importing fish data JSON...");
         File file = new File("src/main/resources/data/fishData.json");
+        log.info("Mapping JSON to Fish objects...");
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, Fish.class);
+        log.info("Saving Fish objects to database...");
         fishRepository.saveAll(objectMapper.readValue(file, collectionType));
     }
 
     private void importLakeDataJSON() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
+        log.info("Importing lake data JSON...");
         File file = new File("src/main/resources/data/lakeData.json");
+        log.info("Mapping JSON to LakeJSON objects...");
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, LakeJSON.class);
         List<LakeJSON> lakes = objectMapper.readValue(file, collectionType);
+        log.info("Saving LakeJSON objects to Lake objects...");
         List<Lake> lakeList = lakes.stream().map(this::mapLakeJSONToLake).toList();
+        log.info("Saving LakeJSON objects to database...");
         lakeRepository.saveAll(lakeList);
     }
 

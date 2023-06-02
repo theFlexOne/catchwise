@@ -4,6 +4,7 @@ import com.flexone.catchwise.domain.Lake;
 import com.flexone.catchwise.mapper.FishToLakeFishResponseMapper;
 import com.flexone.catchwise.repositories.LakeRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class LakeService {
     final LakeRepository lakeRepository;
 
@@ -24,7 +26,11 @@ public class LakeService {
     }
 
     public List<Lake> findAllInRange(double minLat, double maxLat, double minLng, double maxLng) {
-        return filterRelevantLakes(lakeRepository.findAllInRange(minLat, maxLat, minLng, maxLng));
+        log.info("Finding all lakes in range in database");
+        List<Lake> lakes = lakeRepository.findAllInRange(minLat, maxLat, minLng, maxLng);
+        log.info("Filtering relevant lakes");
+        lakes = filterRelevantLakes(lakes);
+        return lakes;
     }
 
     private static List<Lake> filterRelevantLakes(List<Lake> lakes) {

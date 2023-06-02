@@ -55,10 +55,13 @@ public class LakeController {
             @RequestParam double minLng,
             @RequestParam double maxLng
     ) {
+        log.info("Searching for lakes in range: " + minLat + " " + maxLat + " " + minLng + " " + maxLng);
         List<Lake> lakes = lakeService.findAllInRange(minLat, maxLat, minLng, maxLng);
-        log.info(minLat + " " + maxLat + " " + minLng + " " + maxLng);
         log.info("Found {} lakes in range", lakes.size());
-        return lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+        log.info("Mapping lakes to responses");
+        List<LakeResponse> responses = lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+        log.info("Returning {} lake responses", responses.size());
+        return responses;
     }
 
     @GetMapping("/names")
