@@ -1,5 +1,5 @@
 import haversine from "haversine";
-import { Unit } from "./Unit";
+import { Unit } from "../enums/Unit";
 
 export default function getDistanceFromLatLng(
   start: LatLngLiteral,

@@ -23,7 +23,7 @@ public class Lake {
     private String name;
     private String localId;
 
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "county_id", referencedColumnName = "id")
     private County county;
 

@@ -1,6 +1,6 @@
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LakeMarker from "./LakeMarker";
 import buildUrl from "../helpers/buildUrl";
 import { Lake } from "../types/Lake";
@@ -96,6 +96,11 @@ export default function Map({ center, zoom = 14 }: MapProps) {
     if (!coords) return;
     mapObject?.setCenter(coords);
   }
+  useEffect(() => {
+    if (!mapObject) return;
+    console.log("mapObject", mapObject);
+  }, [mapObject]);
+    
 
   if (loadError) return <div>Error loading map. Try refreshing the page?</div>;
 

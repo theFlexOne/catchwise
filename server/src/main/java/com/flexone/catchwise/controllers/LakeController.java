@@ -1,5 +1,6 @@
 package com.flexone.catchwise.controllers;
 
+import com.flexone.catchwise.domain.County;
 import com.flexone.catchwise.domain.Fish;
 import com.flexone.catchwise.domain.Lake;
 import com.flexone.catchwise.dto.FishResponse;
@@ -48,21 +49,23 @@ public class LakeController {
                 .setFishesUrl(l.buildLakeFishUrl());
     }
 
-    @GetMapping("/in-range")
-    public List<LakeResponse> getAllLakesInRange(
-            @RequestParam double minLat,
-            @RequestParam double maxLat,
-            @RequestParam double minLng,
-            @RequestParam double maxLng
-    ) {
-        log.info("Searching for lakes in range: " + minLat + " " + maxLat + " " + minLng + " " + maxLng);
-        List<Lake> lakes = lakeService.findAllInRange(minLat, maxLat, minLng, maxLng);
-        log.info("Found {} lakes in range", lakes.size());
-        log.info("Mapping lakes to responses");
-        List<LakeResponse> responses = lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
-        log.info("Returning {} lake responses", responses.size());
-        return responses;
-    }
+//    @GetMapping("/in-range")
+//    public List<LakeResponse> getAllLakesInRange(
+//            @RequestParam double minLat,
+//            @RequestParam double maxLat,
+//            @RequestParam double minLng,
+//            @RequestParam double maxLng
+//    ) {
+//
+//
+////        log.info("Searching for lakes in range: " + minLat + " " + maxLat + " " + minLng + " " + maxLng);
+////        List<Lake> lakes = lakeService.findAllInRange(minLat, maxLat, minLng, maxLng);
+////        log.info("Found {} lakes in range", lakes.size());
+////        log.info("Mapping lakes to responses");
+////        List<LakeResponse> responses = lakes.stream().map(LakeController::mapLakeToLakeResponse).toList();
+////        log.info("Returning {} lake responses", responses.size());
+////        return responses;
+//    }
 
     @GetMapping("/names")
     public List<LakeNameResponse> getAllLakeNames() {

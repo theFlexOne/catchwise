@@ -25,6 +25,7 @@ public class GoogleApiController {
     final String placesDetailsUrl = "https://maps.googleapis.com/maps/api/place/details";
     final String placesPhotoUrl = "https://maps.googleapis.com/maps/api/place/photo";
     final String elevationUrl = "https://maps.googleapis.com/maps/api/elevation";
+    final String reverseGeocodeUrl = "https://maps.googleapis.com/maps/api/geocode";
 
     @Value("${google.api.key}")
     String googleApiKey;
@@ -75,6 +76,20 @@ public class GoogleApiController {
         log.info(response.toString());
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/reverse-geocode")
+    public ResponseEntity<Object> getReverseGeocode(
+            @RequestParam Double lat,
+            @RequestParam Double lng
+    ) {
+        String locations = lat + "," + lng;
+        Object response = useGoogleReverseGeocodeApi(locations);
+        log.info(response.toString());
+        return ResponseEntity.ok(response);
+    }
+
+
+    // region METHODS
 
     private Object useGooglePlaceSearchApi(String query, String[] fields, String inputType, String output) {
         inputType = inputType == null ? "textquery" : inputType;
@@ -128,6 +143,7 @@ public class GoogleApiController {
     }
 
     private Object useGoogleElevationApi(String locations, String output) {
+        output = output == null ? "json" : output;
         String url = elevationUrl +
                 "/" + output +
                 "?locations=" + locations +
@@ -143,6 +159,24 @@ public class GoogleApiController {
         return useGoogleElevationApi(locations, "json");
     }
 
+    private Object useGoogleReverseGeocodeApi(String locations, String output) {
+        String url = reverseGeocodeUrl +
+                "/" + output +
+                "?latlng=" + locations +
+                "&location_type=GEOMETRIC_CENTER" +
+                "&key=" + googleApiKey;
+
+        return webClient.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(Object.class)
+                .block();
+    }
+    private Object useGoogleReverseGeocodeApi(String locations) {
+        return useGoogleReverseGeocodeApi(locations, "json");
+    }
+
+    // endregion
 
 }
 

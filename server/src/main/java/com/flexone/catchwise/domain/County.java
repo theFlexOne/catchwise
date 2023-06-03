@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Entity
 @Data
 @Accessors(chain = true)
@@ -28,5 +30,8 @@ public class County {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "state_id", referencedColumnName = "id")
     private State state;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Lake> lakes;
 
 }

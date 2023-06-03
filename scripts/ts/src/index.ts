@@ -2,61 +2,56 @@ import fs from "fs";
 import { Lake } from "./index.d";
 import capitalize from "./helpers/capitalize";
 
-interface LakeWithChildren extends Lake {
-  children: Lake[];
-}
 
-async function main(iteration: number = 1) {
-  const lakeData: Lake[] = JSON.parse(
-    fs.readFileSync("./data/rawLakesData.json", "utf8")
+
+async function main() {
+  const countyData = JSON.parse(
+    fs.readFileSync("./data/countyData.json", "utf8")
   );
 
-  const sortedLakesData = lakeData.reduce(
-    (acc, lake) => {
-      lake.name = lake.name == null ? "" : capitalize(lake.name);
-
-      const newLakeFish = lake.fish.map(({ name, species }) => ({
-        name,
-        species:
-          species == null
-            ? ""
-            : `${capitalize(species).split(" ")[0]} ${species
-                .split(" ")
-                .slice(1)
-                .join(" ")}`,
-      }));
-      lake.fish = newLakeFish;
-
-      const isParent = lake.localId.at(-1) === "0";
-      acc[isParent ? "lakes" : "other"].push(lake);
-      return acc;
-    },
-    { lakes: [], other: [] } as { lakes: Lake[]; other: Lake[] }
+  const counties: County[] = countyData.map(
+    (county: CountyData): County => ({
+      id: county.ID,
+      name: county.NAMELSAD,
+      stateName: county.STATE_NAME,
+      stateAbbr: county.STUSPS,
+      stateFP: county.STATEFP,
+      countyFP: county.COUNTYFP,
+      geoId: county.GEOID,
+      landArea: county.ALAND,
+      waterArea: county.AWATER,
+    })
   );
 
-  const newLakesData = sortedLakesData.other.reduce(
-    (acc, lake) => {
-      const parentId = lake.localId.slice(0, -1) + "0";
-      const parent = sortedLakesData.lakes.find(
-        (parent) => parent.localId === parentId
-      ) as LakeWithChildren;
-      if (parent == null) {
-        const newLake = lake as LakeWithChildren;
-        newLake.children = [];
-        acc.push(lake as LakeWithChildren);
-      } else {
-        parent.children ||= [] as Lake[];
-        parent.children.push(lake);
-      }
-      return acc;
-    },
-    [...sortedLakesData.lakes] as LakeWithChildren[]
-  );
-
-  fs.writeFileSync(
-    `./data/lakesData_${iteration}.json`,
-    JSON.stringify(newLakesData, null, 2)
-  );
+  fs.writeFileSync("./data/counties.json", JSON.stringify(counties, null, 2));
 }
 
 main();
+
+type County = {
+  stateFP: string;
+  countyFP: string;
+  geoId: string;
+  name: string;
+  stateName: string;
+  stateAbbr: string;
+  landArea: number;
+  waterArea: number;
+  id: number;
+};
+
+interface CountyData {
+  STATEFP: string; // <-- 2 digit FIPS state code
+  COUNTYFP: string; // <-- 3 digit FIPS county code
+  COUNTYNS: string; // <-- ANSI code
+  AFFGEOID: string; // American FactFinder geoid
+  GEOID: string; // <-- 5 digit FIPS code (STATEFP + COUNTYFP)
+  NAME: string; // <-- County name (short)
+  NAMELSAD: string; // <-- County name (long)
+  STUSPS: string; // <-- State abbreviation
+  STATE_NAME: string; // <-- State name
+  LSAD: string; // <-- U.S. Census Bureau’s legal/statistical area description (LSAD) code for the county
+  ALAND: number; // <-- Land area (square meters)
+  AWATER: number; // <-- Water area (square meters)
+  ID: number; // <-- Unique ID (custom)
+}
