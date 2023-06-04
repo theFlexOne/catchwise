@@ -1,32 +1,35 @@
 package com.flexone.catchwise.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 @Entity
 @Data
 @Accessors(chain = true)
-@NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class County {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private Long id;
 
     private String name;
 
-    @Column(name = "local_id")
-    private String localId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "county_geo_data",
+            joinColumns = @JoinColumn(name = "county_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "geo_data_id", referencedColumnName = "id")
+    )
+    private GeoData geoData;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "state_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "state_id", nullable = false)
     private State state;
-
 }

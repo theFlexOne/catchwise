@@ -7,5 +7,6 @@ public interface StateRepository extends JpaRepository<State, Long> {
 
     State findByName(String state);
 
-    State findByAbbreviation(String state);
+    State findByAbbr(String state);
+
 }

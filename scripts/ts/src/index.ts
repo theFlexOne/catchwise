@@ -1,62 +1,126 @@
 import fs from "fs";
-import { Lake } from "./index.d";
-import capitalize from "./helpers/capitalize";
+import { County, State } from "./formatCountiesAndStatesGeoJSON";
 
-interface LakeWithChildren extends Lake {
-  children: Lake[];
-}
+const lakes = JSON.parse(fs.readFileSync("./data/newLakesData.json", "utf8"));
 
-async function main(iteration: number = 1) {
-  const lakeData: Lake[] = JSON.parse(
-    fs.readFileSync("./data/rawLakesData.json", "utf8")
+const fipCodes: { [key: string]: string } = {
+  Aitkin: "27001",
+  Anoka: "27003",
+  Becker: "27005",
+  Beltrami: "27007",
+  Benton: "27009",
+  "Big Stone": "27011",
+  "Blue Earth": "27013",
+  Brown: "27015",
+  Carlton: "27017",
+  Carver: "27019",
+  Cass: "27021",
+  Chippewa: "27023",
+  Chisago: "27025",
+  Clay: "27027",
+  Clearwater: "27029",
+  Cook: "27031",
+  Cottonwood: "27033",
+  "Crow Wing": "27035",
+  Dakota: "27037",
+  Dodge: "27039",
+  Douglas: "27041",
+  Faribault: "27043",
+  Fillmore: "27045",
+  Freeborn: "27047",
+  Goodhue: "27049",
+  Grant: "27051",
+  Hennepin: "27053",
+  Houston: "27055",
+  Hubbard: "27057",
+  Isanti: "27059",
+  Itasca: "27061",
+  Jackson: "27063",
+  Kanabec: "27065",
+  Kandiyohi: "27067",
+  Kittson: "27069",
+  Koochiching: "27071",
+  "Lac qui Parle": "27073",
+  "Lake of the Woods": "27077",
+  Lake: "27075",
+  "Le Sueur": "27079",
+  Lincoln: "27081",
+  Lyon: "27083",
+  Mahnomen: "27087",
+  Marshall: "27089",
+  Martin: "27091",
+  McLeod: "27085",
+  Meeker: "27093",
+  "Mille Lacs": "27095",
+  Morrison: "27097",
+  Mower: "27099",
+  Murray: "27101",
+  Nicollet: "27103",
+  Nobles: "27105",
+  Norman: "27107",
+  Olmsted: "27109",
+  "Otter Tail": "27111",
+  Pennington: "27113",
+  Pine: "27115",
+  Pipestone: "27117",
+  Polk: "27119",
+  Pope: "27121",
+  Ramsey: "27123",
+  "Red Lake": "27125",
+  Redwood: "27127",
+  Renville: "27129",
+  Rice: "27131",
+  Rock: "27133",
+  Roseau: "27135",
+  "Saint Louis": "27137",
+  Scott: "27139",
+  Sherburne: "27141",
+  Sibley: "27143",
+  Stearns: "27145",
+  Steele: "27147",
+  Stevens: "27149",
+  Swift: "27151",
+  Todd: "27153",
+  Traverse: "27155",
+  Wabasha: "27157",
+  Wadena: "27159",
+  Waseca: "27161",
+  Washington: "27163",
+  Watonwan: "27165",
+  Wilkin: "27167",
+  Winona: "27169",
+  Wright: "27171",
+  "Yellow Medicine": "27173",
+};
+
+lakes.forEach((lake: any) => {
+  lake.countyFips = fipCodes[lake.countyName];
+});
+
+fs.writeFileSync("./data/newLakesData.json", JSON.stringify(lakes, null, 2));
+
+function combineStatesAndCounties() {
+  const states: State[] = JSON.parse(
+    fs.readFileSync("./data/statesGeoData.json", "utf8")
+  );
+  const counties: County[] = JSON.parse(
+    fs.readFileSync("./data/countiesGeoData.json", "utf8")
   );
 
-  const sortedLakesData = lakeData.reduce(
-    (acc, lake) => {
-      lake.name = lake.name == null ? "" : capitalize(lake.name);
-
-      const newLakeFish = lake.fish.map(({ name, species }) => ({
-        name,
-        species:
-          species == null
-            ? ""
-            : `${capitalize(species).split(" ")[0]} ${species
-                .split(" ")
-                .slice(1)
-                .join(" ")}`,
-      }));
-      lake.fish = newLakeFish;
-
-      const isParent = lake.localId.at(-1) === "0";
-      acc[isParent ? "lakes" : "other"].push(lake);
-      return acc;
-    },
-    { lakes: [], other: [] } as { lakes: Lake[]; other: Lake[] }
-  );
-
-  const newLakesData = sortedLakesData.other.reduce(
-    (acc, lake) => {
-      const parentId = lake.localId.slice(0, -1) + "0";
-      const parent = sortedLakesData.lakes.find(
-        (parent) => parent.localId === parentId
-      ) as LakeWithChildren;
-      if (parent == null) {
-        const newLake = lake as LakeWithChildren;
-        newLake.children = [];
-        acc.push(lake as LakeWithChildren);
-      } else {
-        parent.children ||= [] as Lake[];
-        parent.children.push(lake);
-      }
-      return acc;
-    },
-    [...sortedLakesData.lakes] as LakeWithChildren[]
-  );
+  const newStatesData = states.map((state) => {
+    const stateCounties = counties.filter(
+      (county) => county.geoid.slice(0, 2) === state.geoid
+    );
+    return {
+      ...state,
+      counties: stateCounties,
+    };
+  });
 
   fs.writeFileSync(
-    `./data/lakesData_${iteration}.json`,
-    JSON.stringify(newLakesData, null, 2)
+    "./data/statesWithCountiesGeoData.json",
+    JSON.stringify(newStatesData, null, 2)
   );
-}
 
-main();
+  console.log("Done!");
+}
