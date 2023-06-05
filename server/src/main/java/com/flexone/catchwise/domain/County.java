@@ -32,11 +32,8 @@ public class County {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_id", nullable = false)
     private State state;
-<<<<<<< HEAD
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Lake> lakes;
 
-=======
->>>>>>> 704d6b66c9d39fa127599ed7bea093d15f86b9d3
 }

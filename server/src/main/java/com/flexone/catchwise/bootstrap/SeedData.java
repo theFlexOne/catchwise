@@ -32,11 +32,7 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-<<<<<<< HEAD
-
-=======
->>>>>>> 704d6b66c9d39fa127599ed7bea093d15f86b9d3
-//        seed();
+        seed();
     }
 
     public void seed() {
@@ -65,7 +61,7 @@ public class SeedData implements CommandLineRunner {
 
 
         ObjectMapper mapper = new ObjectMapper();
-        File file = new File("src/main/resources/data/statesWithCountiesGeoData.json");
+        File file = new File("src/main/resources/data/mn_geo_data.json");
         CollectionType type = mapper.getTypeFactory().constructCollectionType(List.class, StateJSON.class);
         List<StateJSON> statesData = mapper.readValue(file, type);
         List<State> states = mapStateJSONToState(statesData);
@@ -82,7 +78,7 @@ public class SeedData implements CommandLineRunner {
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/resources/data/fishData.json");
+        File file = new File("src/main/resources/data/fish_data.json");
         CollectionType collectionType = objectMapper
                 .getTypeFactory()
                 .constructCollectionType(List.class, FishJSON.class);
@@ -96,7 +92,7 @@ public class SeedData implements CommandLineRunner {
     private void seedLakeData() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
-        File file = new File("src/main/resources/data/lakeData.json");
+        File file = new File("src/main/resources/data/mn_lake_data.json");
 
         CollectionType collectionType = objectMapper
                 .getTypeFactory()
