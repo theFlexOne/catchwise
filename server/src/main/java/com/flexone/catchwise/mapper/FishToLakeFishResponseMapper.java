@@ -1,7 +1,7 @@
 package com.flexone.catchwise.mapper;
 
 import com.flexone.catchwise.domain.Fish;
-import com.flexone.catchwise.dto.LakeFishResponse;
+import com.flexone.catchwise.controller.dto.LakeFishResponse;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

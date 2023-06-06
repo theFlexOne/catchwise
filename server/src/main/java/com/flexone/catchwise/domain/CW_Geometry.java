@@ -5,28 +5,25 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryCollection;
-import org.locationtech.jts.geom.MultiPolygon;
 
-import java.util.Map;
+import java.util.List;
 
 @Entity
 @Data
 @Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class GeoData {
+public class CW_Geometry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
-    @Column(name = "properties")
-    private String properties;
+    private String type;
 
-    @Column(name = "geometry", columnDefinition = "GEOMETRY")
-    private Geometry geometry;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Coordinates> coordinates;
+
 }

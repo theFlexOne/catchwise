@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
+import org.locationtech.jts.geom.MultiPolygon;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class County {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonIgnore
     private Long id;
 
     private String name;
@@ -24,10 +25,11 @@ public class County {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(
             name = "county_geo_data",
-            joinColumns = @JoinColumn(name = "county_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "geo_data_id", referencedColumnName = "id")
+            joinColumns = {@JoinColumn(name = "county_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "geo_data_id", referencedColumnName = "id")}
     )
     private GeoData geoData;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "state_id", nullable = false)
