@@ -9,11 +9,19 @@ import lombok.experimental.Accessors;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class GeoJsonFeatureCollection {
     private String type;
     private String name;
     private GeoJsonFeature crs;
     private List<GeoJsonFeature> features;
+
+    public GeoJsonFeatureCollection(String type, String name, GeoJsonFeature crs, List<GeoJsonFeature> features) {
+        this.type = type;
+        this.name = name;
+        this.crs = crs;
+        this.features = features;
+    }
+
+
 }

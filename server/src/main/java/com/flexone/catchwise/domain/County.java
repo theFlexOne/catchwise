@@ -22,6 +22,9 @@ public class County {
 
     private String name;
 
+    private String fipsCode;
+    private String nsCode;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(
             name = "county_geo_data",

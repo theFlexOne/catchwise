@@ -23,7 +23,12 @@ public class State {
     private Long id;
 
     private String name;
+
     private String abbr;
+
+    private String fipsCode;
+
+    private String nsCode;
 
     @OneToMany(
             mappedBy = "state",
