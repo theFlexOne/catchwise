@@ -1,13 +1,7 @@
 package com.flexone.catchwise.service;
 
-import com.flexone.catchwise.bootstrap.dto.GeoJsonFeatureCollection;
-import com.flexone.catchwise.domain.GeoData;
 import com.flexone.catchwise.repository.GeoDataRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.locationtech.jts.geom.Geometry;
-import org.locationtech.jts.geom.GeometryCollection;
-import org.locationtech.jts.geom.GeometryFactory;
 import org.springframework.stereotype.Service;
 
 

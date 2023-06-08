@@ -46,6 +46,14 @@ public class Lake {
     @OneToMany(cascade = CascadeType.ALL)
     private List<LakeComponent> components;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "lake_geo_data",
+            joinColumns = {@JoinColumn(name = "lake_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "geo_data_id", referencedColumnName = "id")}
+    )
+    private GeoData geoData;
+
     public Double getLat() {
         return this.getCoordinates().getLatitude();
     }

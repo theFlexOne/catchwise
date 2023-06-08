@@ -1,23 +1,11 @@
 package com.flexone.catchwise.bootstrap;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
-import com.flexone.catchwise.domain.*;
-import com.flexone.catchwise.bootstrap.dto.CountyJSON;
-import com.flexone.catchwise.bootstrap.dto.FishJSON;
-import com.flexone.catchwise.bootstrap.dto.LakeJSON;
-import com.flexone.catchwise.bootstrap.dto.StateJSON;
 import com.flexone.catchwise.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j

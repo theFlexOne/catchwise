@@ -32,6 +32,10 @@ public class LakeService {
         return lakes;
     }
 
+    public void saveAll(List<Lake> lakes) {
+        lakeRepository.saveAll(lakes);
+    }
+
     private static List<Lake> filterRelevantLakes(List<Lake> lakes) {
         return lakes.stream()
                 .filter((Predicate<? super Lake>) isRelevantLake())
@@ -42,4 +46,6 @@ public class LakeService {
     private static Predicate<? super Lake> isRelevantLake() {
         return l -> l.getFishes().size() > 0 && l.getCoordinates() != null && l.getName() != null;
     }
+
+
 }

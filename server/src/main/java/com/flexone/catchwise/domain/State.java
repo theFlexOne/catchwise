@@ -28,7 +28,7 @@ public class State {
 
     private String fipsCode;
 
-    private String nsCode;
+    private String ansiCode;
 
     @OneToMany(
             mappedBy = "state",
